@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TravelBook</string>
+    <string name="title_schedule">スケジュール</string>
+    <string name="title_list">持ち物リスト</string>
+    <string name="title_photo">スクラップ</string>
+    <string name="title_memo">メモ</string>
+    <string name="title_setting">アプリ設定</string>
+    <string name="title_schedule_add">スケジュール追加</string>
+    <string name="title_list_add">持ち物追加</string>
+</resources>
