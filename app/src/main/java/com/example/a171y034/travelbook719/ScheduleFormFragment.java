@@ -2,7 +2,6 @@ package com.example.a171y034.travelbook719;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,7 +27,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
     public static final String TAG = ScheduleFormFragment.class.getSimpleName();
 
-    private static final int MENU_ADD = 1;
+//    private static final int MENU_ADD = 1;
 
     public static final String ARGS_COLORLABEL = "key-colorlabel";
 
@@ -44,7 +43,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
     private boolean mIsTextEdited = false;
 
-    private MenuItem mMenuAdd;
+//    private MenuItem mMenuAdd;
 
     public static ScheduleFormFragment newInstance() {
         ScheduleFormFragment fragment = new ScheduleFormFragment();
@@ -65,6 +64,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // MenuItemの追加を許可
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -118,34 +118,33 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
     }
 
-
+    // チェックボタンを表示させる
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem menuItem = menu.findItem(MENU_ADD);
+        MenuItem menuItem = menu.findItem(R.id.actionok);
         if (menuItem == null) {
-            mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                mMenuAdd.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-            }
+            inflater.inflate(R.menu.menu_sub, menu);
+            menu.findItem(R.id.actionok).setVisible(true);
+            //mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
+            //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            //    mMenuAdd.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            //}
         }
-        // チェックボタンを表示させる
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_sub, menu);
-        menu.findItem(R.id.actionok).setVisible(true);
     }
 
-
+    // チェックボタンを押したときの処理
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (item.getItemId() == MENU_ADD) {
-            //TODOリストを追加
+        if (item.getItemId() == R.id.actionok) {
+            //Scheduleリストを追加
             String value = mEtInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
                 resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
                 resultData.putExtra(ARGS_VALUE, value);
                 Toast.makeText(getActivity(), "追加しました", Toast.LENGTH_SHORT).show();
+                getFragmentManager().popBackStack();
                 if (mCreatedTime == 0) {
                     //作成時間がない場合は新規データとして作成時間を生成
                     resultData.putExtra(ARGS_CREATEDTIME, System.currentTimeMillis());
@@ -153,18 +152,19 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
                     //作成時間がある場合は既存のデータを更新
                     resultData.putExtra(ARGS_CREATEDTIME, mCreatedTime);
                 }
-
                 //Broadcastを送信
                 resultData.setAction(ScheduleMainFragment.ACTION_CREATE_SCHEDULE);
                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(resultData);
+            } else {
+                Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
+            }
 
-                }
-                //ソフトウェアキーボードを閉じる
-                InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
-                        .getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(mEtInput.getWindowToken(), 0);
+            //ソフトウェアキーボードを閉じる
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(mEtInput.getWindowToken(), 0);
 
-                return true;
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

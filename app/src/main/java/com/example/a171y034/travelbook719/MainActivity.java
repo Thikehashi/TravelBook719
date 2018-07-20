@@ -30,11 +30,8 @@ public class MainActivity extends AppCompatActivity  {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.navigation_schedule:
-                                /*String tag = ScheduleMainFragment.TAG;
-                                getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                                        ScheduleMainFragment.newInstance(), tag).commit();
-                                        */
-                                selectedFragment = ScheduleMainFragment.newInstance();
+
+                                 selectedFragment =  ScheduleMainFragment.newInstance();
                                 break;
                             case R.id.navigation_list:
                                 selectedFragment = BelongingsMainFragment.newInstance();
@@ -56,7 +53,6 @@ public class MainActivity extends AppCompatActivity  {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, ScheduleMainFragment.newInstance());
         transaction.commit();
-
     }
 
     @Override
@@ -68,6 +64,15 @@ public class MainActivity extends AppCompatActivity  {
             //リスト画面の場合は通常のバックキー処理(アプリを終了)
             super.onBackPressed();
         }
+    }
+
+    /**
+     * TODOリスト一覧を表示
+     */
+    public void showScheduleList() {
+        String tag = ScheduleMainFragment.TAG;
+        getSupportFragmentManager().beginTransaction().replace(R.id.content,
+                ScheduleMainFragment.newInstance(), tag).commit();
     }
 
     /**
@@ -84,6 +89,8 @@ public class MainActivity extends AppCompatActivity  {
             fragment = ScheduleFormFragment.newInstance(item.getColorLabel(),
                     item.getValue(), item.getCreatedTime());
         }
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
+
     }
 
     public List<Add> getAddList() {
@@ -113,5 +120,4 @@ public class MainActivity extends AppCompatActivity  {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
