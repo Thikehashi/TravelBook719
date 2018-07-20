@@ -10,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity  {
 
+    private List<Add> mAddList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,10 @@ public class MainActivity extends AppCompatActivity  {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.navigation_schedule:
+                                /*String tag = ScheduleMainFragment.TAG;
+                                getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                                        ScheduleMainFragment.newInstance(), tag).commit();
+                                        */
                                 selectedFragment = ScheduleMainFragment.newInstance();
                                 break;
                             case R.id.navigation_list:
@@ -51,6 +58,38 @@ public class MainActivity extends AppCompatActivity  {
         transaction.commit();
 
     }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            //フォーム画面を開いている場合は画面を閉じる
+            getSupportFragmentManager().popBackStack();
+        } else {
+            //リスト画面の場合は通常のバックキー処理(アプリを終了)
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     * Scheduleフォーム画面を表示
+     *
+     * @param item Scheduleリストデータ
+     */
+    public void showScheduleForm(Add item) {
+        String tag = ScheduleFormFragment.TAG;
+        ScheduleFormFragment fragment;
+        if (item == null) {
+            fragment = ScheduleFormFragment.newInstance();
+        } else {
+            fragment = ScheduleFormFragment.newInstance(item.getColorLabel(),
+                    item.getValue(), item.getCreatedTime());
+        }
+    }
+
+    public List<Add> getAddList() {
+        return mAddList;
+    }
+
 
     // Actionバーにmenu_mainの表示
     @Override

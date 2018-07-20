@@ -69,12 +69,12 @@
     <!--テキスト入力フォーム-->
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="タイトル"
-        android:layout_below="@+id/color_label"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"/>
+        android:layout_below="@+id/color_label"
+        android:layout_marginTop="40dp"
+        android:hint="タイトル"/>
 
 </RelativeLayout>

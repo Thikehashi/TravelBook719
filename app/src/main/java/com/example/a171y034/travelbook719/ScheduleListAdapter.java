@@ -1,35 +1,37 @@
 package com.example.a171y034.travelbook719;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by 171y034 on 2018/07/19.
  */
 
-public class ScheduleListAdapter extends Fragment {
+public class ScheduleListAdapter extends ArrayAdapter<Add> {
 
     /** フィールド */
     private LayoutInflater mInflator;
 
-    public static ScheduleListAdapter newInstance() {
+    public ScheduleListAdapter(Context context, List<Add> objects) {
+        super(context, 0, objects);
+        mInflator = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+ /*   public static ScheduleListAdapter newInstance() {
         ScheduleListAdapter fragment = new ScheduleListAdapter();
         return fragment;
     }
-
+/
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,32 +43,10 @@ public class ScheduleListAdapter extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_schedule_add, container, false);
     }
+*/
 
-    // チェックボタンを表示させる
+
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_sub, menu);
-        menu.findItem(R.id.actionok).setVisible(true);
-    }
-
-    // チェックボタンを押したときの処理
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.actionok) {
-            Toast.makeText(getActivity(), "追加しました", Toast.LENGTH_SHORT).show();
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            //ft.addToBackStack(null);
-            ScheduleMainFragment fragment = new ScheduleMainFragment();
-            ft.replace(R.id.content, fragment);
-            ft.commit();
-        }
-        return true;
-    }
-
-/*    @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
@@ -98,8 +78,9 @@ public class ScheduleListAdapter extends Fragment {
         if (!TextUtils.isEmpty(createdtime)) {
             holder.tvCreatedTime.setText(createdtime);
         }
+        return convertView;
     }
-*/
+
     /**
      * 現在年月をDate型返却.
      */
