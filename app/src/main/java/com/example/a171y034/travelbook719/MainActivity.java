@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity  {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.navigation_schedule:
-
-                                 selectedFragment =  ScheduleMainFragment.newInstance();
+                                showScheduleList();
+                                //selectedFragment =  ScheduleMainFragment.newInstance();
                                 break;
                             case R.id.navigation_list:
-                                selectedFragment = BelongingsMainFragment.newInstance();
+                                                              selectedFragment = BelongingsMainFragment.newInstance();
                                 break;
                             case R.id.navigation_photo:
-                                selectedFragment = PhotoMainFragment.newInstance();
+                               selectedFragment = PhotoMainFragment.newInstance();
                                 break;
                             case R.id.navigation_memo:
                                 selectedFragment = MemoMainFragment.newInstance();
@@ -46,13 +46,17 @@ public class MainActivity extends AppCompatActivity  {
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.content, selectedFragment);
                         transaction.commit();
+
                         return true;
+
                     }
                 });
         // 起動から表示
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, ScheduleMainFragment.newInstance());
         transaction.commit();
+
+        showScheduleList();
     }
 
     @Override
@@ -75,6 +79,12 @@ public class MainActivity extends AppCompatActivity  {
                 ScheduleMainFragment.newInstance(), tag).commit();
     }
 
+/*    public void showBelongingsList(){
+        String tag = BelongingsMainFragment.TAG;
+        getSupportFragmentManager().beginTransaction().replace(R.id.content,
+                BelongingsMainFragment.newInstance(), tag).commit();
+    }
+*/
     /**
      * Scheduleフォーム画面を表示
      *
@@ -90,13 +100,11 @@ public class MainActivity extends AppCompatActivity  {
                     item.getValue(), item.getCreatedTime());
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
-
     }
 
     public List<Add> getAddList() {
         return mAddList;
     }
-
 
     // Actionバーにmenu_mainの表示
     @Override

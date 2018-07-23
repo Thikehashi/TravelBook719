@@ -2,9 +2,12 @@ package com.example.a171y034.travelbook719;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -27,7 +30,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
     public static final String TAG = ScheduleFormFragment.class.getSimpleName();
 
-//    private static final int MENU_ADD = 1;
+    private static final int MENU_ADD = 1;
 
     public static final String ARGS_COLORLABEL = "key-colorlabel";
 
@@ -43,7 +46,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
     private boolean mIsTextEdited = false;
 
-//    private MenuItem mMenuAdd;
+    private MenuItem mMenuAdd;
 
     public static ScheduleFormFragment newInstance() {
         ScheduleFormFragment fragment = new ScheduleFormFragment();
@@ -121,14 +124,14 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     // チェックボタンを表示させる
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem menuItem = menu.findItem(R.id.actionok);
+        MenuItem menuItem = menu.findItem(MENU_ADD);
         if (menuItem == null) {
-            inflater.inflate(R.menu.menu_sub, menu);
-            menu.findItem(R.id.actionok).setVisible(true);
-            //mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
-            //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            //    mMenuAdd.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-            //}
+            //inflater.inflate(R.menu.menu_sub, menu);
+            //menu.findItem(R.id.actionok).setVisible(true);
+            mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                mMenuAdd.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            }
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -136,7 +139,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     // チェックボタンを押したときの処理
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.actionok) {
+        if (item.getItemId() == MENU_ADD) {
             //Scheduleリストを追加
             String value = mEtInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
@@ -144,7 +147,6 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
                 resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
                 resultData.putExtra(ARGS_VALUE, value);
                 Toast.makeText(getActivity(), "追加しました", Toast.LENGTH_SHORT).show();
-                getFragmentManager().popBackStack();
                 if (mCreatedTime == 0) {
                     //作成時間がない場合は新規データとして作成時間を生成
                     resultData.putExtra(ARGS_CREATEDTIME, System.currentTimeMillis());
@@ -158,6 +160,19 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
             }
+
+            //FragmentManager fm = getFragmentManager();
+            //FragmentManager.BackStackEntry entry = fm.getBackStackEntryAt(0);
+            //fm.popBackStack(entry.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                // ひとつ前のFragmentに戻る
+                //getFragmentManager().popBackStack();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            //ft.addToBackStack(null);
+            ScheduleMainFragment fragment = new ScheduleMainFragment();
+            ft.replace(R.id.content, fragment);
+            ft.commit();
+
 
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
