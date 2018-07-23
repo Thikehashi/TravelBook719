@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity  {
                                 //selectedFragment =  ScheduleMainFragment.newInstance();
                                 break;
                             case R.id.navigation_list:
-                                                              selectedFragment = BelongingsMainFragment.newInstance();
+                                selectedFragment = BelongingsMainFragment.newInstance();
                                 break;
                             case R.id.navigation_photo:
                                selectedFragment = PhotoMainFragment.newInstance();
@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity  {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, ScheduleMainFragment.newInstance());
         transaction.commit();
-
-        showScheduleList();
     }
 
     @Override
@@ -79,13 +77,8 @@ public class MainActivity extends AppCompatActivity  {
                 ScheduleMainFragment.newInstance(), tag).commit();
     }
 
-/*    public void showBelongingsList(){
-        String tag = BelongingsMainFragment.TAG;
-        getSupportFragmentManager().beginTransaction().replace(R.id.content,
-                BelongingsMainFragment.newInstance(), tag).commit();
-    }
-*/
-    /**
+
+    /*    /**
      * Scheduleフォーム画面を表示
      *
      * @param item Scheduleリストデータ
