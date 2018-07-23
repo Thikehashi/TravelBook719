@@ -1,5 +1,8 @@
 package com.example.a171y034.travelbook719;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 171y034 on 2018/07/19.
  */
@@ -51,4 +54,17 @@ public class Add {
         this.createdTime = createdTime;
     }
 
+    /**
+     * テスト表示用にダミーのリストアイテムを作成.
+     */
+    public static List<Add> addDummyItem() {
+        List<Add> items = new ArrayList<>();
+        items.add(new Add(Add.ColorLabel.INDIGO, "猫に小判", System.currentTimeMillis() + 1));
+        items.add(new Add(Add.ColorLabel.PINK, "猫の手も借りたい", System.currentTimeMillis() + 2));
+        items.add(new Add(Add.ColorLabel.GREEN, "窮鼠猫を噛む", System.currentTimeMillis() + 3));
+        items.add(new Add(Add.ColorLabel.AMBER,
+                "猫は三年飼っても三日で恩を忘れる", System.currentTimeMillis() + 4));
+        items.add(new Add(Add.ColorLabel.NONE, "猫も杓子も", System.currentTimeMillis() + 5));
+        return items;
+    }
 }

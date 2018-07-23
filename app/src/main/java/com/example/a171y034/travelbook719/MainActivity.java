@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // ダミーデータ作成
+        mAddList = Add.addDummyItem();
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener
@@ -52,9 +55,11 @@ public class MainActivity extends AppCompatActivity  {
                     }
                 });
         // 起動から表示
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+/*        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, ScheduleMainFragment.newInstance());
         transaction.commit();
+        */
+        showScheduleList();
     }
 
     @Override

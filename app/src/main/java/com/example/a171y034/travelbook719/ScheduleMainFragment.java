@@ -56,6 +56,10 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
 
         View v = inflater.inflate(R.layout.fragment_schedule_main, container, false);
 
+        //ダミーデータを作成してAdapterにセット
+        mAddList = ((MainActivity) getActivity()).getAddList();
+        mAdapter = new ScheduleListAdapter(getActivity(), mAddList);
+
         //ListViewを初期化
         ListView listView = (ListView) v.findViewById(R.id.list);
         listView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
