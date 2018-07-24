@@ -99,6 +99,23 @@ public class MainActivity extends AppCompatActivity  {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
     }
 
+    /*    /**
+ * Memoフォーム画面を表示
+ *
+ * @param item Memoリストデータ
+ */
+    public void showMemoForm(Add item) {
+        String tag = MemoFormFragment.TAG;
+        MemoFormFragment fragment;
+        if (item == null) {
+            fragment = MemoFormFragment.newInstance();
+        } else {
+            fragment = MemoFormFragment.newInstance(item.getColorLabel(),
+                    item.getValue(), item.getCreatedTime());
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
+    }
+
     public List<Add> getAddList() {
         return mAddList;
     }

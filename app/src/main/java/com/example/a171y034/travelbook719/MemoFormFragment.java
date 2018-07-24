@@ -23,12 +23,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * Created by 171y034 on 2018/07/20.
+ * Created by 171y034 on 2018/07/24.
  */
 
-public class ScheduleFormFragment extends Fragment implements View.OnClickListener {
+public class MemoFormFragment extends Fragment implements View.OnClickListener {
 
-    public static final String TAG = ScheduleFormFragment.class.getSimpleName();
+    public static final String TAG = MemoFormFragment.class.getSimpleName();
 
     private static final int MENU_ADD = 1;
 
@@ -48,12 +48,12 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
     private MenuItem mMenuAdd;
 
-    public static ScheduleFormFragment newInstance() {
-        return new ScheduleFormFragment();
+    public static MemoFormFragment newInstance() {
+        return new MemoFormFragment();
     }
 
-    public static ScheduleFormFragment newInstance(int colorLabel, String value, long createdTime) {
-        ScheduleFormFragment fragment = new ScheduleFormFragment();
+    public static MemoFormFragment newInstance(int colorLabel, String value, long createdTime) {
+        MemoFormFragment fragment = new MemoFormFragment();
         Bundle args = new Bundle();
         args.putInt(ARGS_COLORLABEL, colorLabel);
         args.putString(ARGS_VALUE, value);
@@ -74,7 +74,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_schedule_add, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_memo_add, container, false);
 
         //カラーラベルのインスタンスを取得
         rootView.findViewById(R.id.color_none).setOnClickListener((View.OnClickListener) this);
@@ -115,9 +115,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
             //作成時間をセット
             mCreatedTime = args.getLong(ARGS_CREATEDTIME, 0);
         }
-
         return rootView;
-
     }
 
     // チェックボタンを表示させる
@@ -139,7 +137,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == MENU_ADD) {
-            //Scheduleリストを追加
+            //Memoリストを追加
             String value = mEtInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
@@ -154,24 +152,17 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
                     resultData.putExtra(ARGS_CREATEDTIME, mCreatedTime);
                 }
                 //Broadcastを送信
-                resultData.setAction(ScheduleMainFragment.ACTION_CREATE_SCHEDULE);
+                resultData.setAction(MemoMainFragment.ACTION_CREATE_SCHEDULE);
                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(resultData);
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
             }
-
-            //FragmentManager fm = getFragmentManager();
-            //FragmentManager.BackStackEntry entry = fm.getBackStackEntryAt(0);
-            //fm.popBackStack(entry.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                // ひとつ前のFragmentに戻る
-                //getFragmentManager().popBackStack();
+            // ひとつ前のFragmentに戻る
             FragmentManager fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            //ft.addToBackStack(null);
-            ScheduleMainFragment fragment = new ScheduleMainFragment();
+            MemoMainFragment fragment = new MemoMainFragment();
             ft.replace(R.id.content, fragment);
             ft.commit();
-
 
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
