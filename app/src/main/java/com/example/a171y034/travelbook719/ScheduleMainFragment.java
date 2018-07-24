@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -73,12 +71,6 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                Fragment newFragment = new ScheduleFormFragment();
-                transaction.replace(R.id.content, newFragment);
-                //transaction.addToBackStack(null);
-                transaction.commit();
                 //Scheduleリストを追加
                 ((MainActivity) getActivity()).showScheduleForm(null);
             }

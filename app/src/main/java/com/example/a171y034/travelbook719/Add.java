@@ -65,6 +65,9 @@ public class Add {
         items.add(new Add(Add.ColorLabel.AMBER,
                 "猫は三年飼っても三日で恩を忘れる", System.currentTimeMillis() + 4));
         items.add(new Add(Add.ColorLabel.NONE, "猫も杓子も", System.currentTimeMillis() + 5));
+        items.add(new Add(Add.ColorLabel.INDIGO, "八景島シーパラダイス", System.currentTimeMillis() + 6));
+        items.add(new Add(Add.ColorLabel.PINK, "赤レンガ倉庫", System.currentTimeMillis() + 7));
+        items.add(new Add(Add.ColorLabel.GREEN, "ホテル", System.currentTimeMillis() + 8));
         return items;
     }
 }

@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity  {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.navigation_schedule:
-                                showScheduleList();
-                                //selectedFragment =  ScheduleMainFragment.newInstance();
+                                //showScheduleList();
+                                selectedFragment =  ScheduleMainFragment.newInstance();
                                 break;
                             case R.id.navigation_list:
                                 selectedFragment = BelongingsMainFragment.newInstance();
@@ -55,11 +55,10 @@ public class MainActivity extends AppCompatActivity  {
                     }
                 });
         // 起動から表示
-/*        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, ScheduleMainFragment.newInstance());
         transaction.commit();
-        */
-        showScheduleList();
+//        showScheduleList();
     }
 
     @Override
