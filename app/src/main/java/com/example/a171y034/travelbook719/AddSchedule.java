@@ -55,7 +55,7 @@ public class AddSchedule {
     }
 
     /**
-     * 表示リストアイテムを作成.
+     * スケジュールリストアイテムを作成.
      */
     public static List<AddSchedule> Item() {
         List<AddSchedule> items = new ArrayList<>();

@@ -160,18 +160,12 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
             }
 
-            //FragmentManager fm = getFragmentManager();
-            //FragmentManager.BackStackEntry entry = fm.getBackStackEntryAt(0);
-            //fm.popBackStack(entry.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                // ひとつ前のFragmentに戻る
-                //getFragmentManager().popBackStack();
+            // 1つ前のFragmentに戻る
             FragmentManager fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            //ft.addToBackStack(null);
             ScheduleMainFragment fragment = new ScheduleMainFragment();
             ft.replace(R.id.content, fragment);
             ft.commit();
-
 
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()

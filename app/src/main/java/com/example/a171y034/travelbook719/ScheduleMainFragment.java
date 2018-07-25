@@ -41,12 +41,6 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
         return fragment;
     }
 
-/*    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-*/
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -128,7 +122,7 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
     BroadcastReceiver mAddTodoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //Todoデータを作成
+            //スケジュールデータを作成
             int color = intent.getIntExtra(ScheduleFormFragment.ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
             String value = intent.getStringExtra(ScheduleFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(ScheduleFormFragment.ARGS_CREATEDTIME, 0);
@@ -151,7 +145,7 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
                 mAddList.add(updateIndex, newItem);
             }
 
-            //TODOリストを更新
+            //スケジュールリストを更新
             mAdapter.notifyDataSetChanged();
 
         }
