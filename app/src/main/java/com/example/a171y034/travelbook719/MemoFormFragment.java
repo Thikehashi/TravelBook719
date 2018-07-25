@@ -152,7 +152,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
                     resultData.putExtra(ARGS_CREATEDTIME, mCreatedTime);
                 }
                 //Broadcastを送信
-                resultData.setAction(MemoMainFragment.ACTION_CREATE_SCHEDULE);
+                resultData.setAction(MemoMainFragment.ACTION_CREATE_MEMO);
                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(resultData);
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();

@@ -28,7 +28,7 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
 
     public static final String TAG = MemoMainFragment.class.getSimpleName();
 
-    public static final String ACTION_CREATE_SCHEDULE = "action-create_todo";
+    public static final String ACTION_CREATE_MEMO = "action-create_memo";
 
     private static final int MENU_ID_DELETE = 1;
 
@@ -72,7 +72,7 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
 
         //BroadcastReceiverを登録
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
-                mAddTodoReceiver, new IntentFilter(ACTION_CREATE_SCHEDULE));
+                mAddTodoReceiver, new IntentFilter(ACTION_CREATE_MEMO));
         return v;
     }
 
