@@ -14,15 +14,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
 
-    private List<Add> mAddList;
+    private List<AddSchedule> mAddListSchedule;
+    private List<AddMemo> mAddListMemo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // ダミーデータ作成
-        mAddList = Add.addDummyItem();
+        // データ作成
+        mAddListSchedule = AddSchedule.Item();
+        mAddListMemo = AddMemo.Item();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity  {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.navigation_schedule:
-                                //showScheduleList();
                                 selectedFragment =  ScheduleMainFragment.newInstance();
                                 break;
                             case R.id.navigation_list:
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity  {
      *
      * @param item Scheduleリストデータ
      */
-    public void showScheduleForm(Add item) {
+    public void showScheduleForm(AddSchedule item) {
         String tag = ScheduleFormFragment.TAG;
         ScheduleFormFragment fragment;
         if (item == null) {
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity  {
  *
  * @param item Memoリストデータ
  */
-    public void showMemoForm(Add item) {
+    public void showMemoForm(AddMemo item) {
         String tag = MemoFormFragment.TAG;
         MemoFormFragment fragment;
         if (item == null) {
@@ -116,9 +117,10 @@ public class MainActivity extends AppCompatActivity  {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
     }
 
-    public List<Add> getAddList() {
-        return mAddList;
+    public List<AddSchedule> getAddList() {
+        return mAddListSchedule;
     }
+    public List<AddMemo> getAddListMemo() {return mAddListMemo;}
 
     // Actionバーにmenu_mainの表示
     @Override

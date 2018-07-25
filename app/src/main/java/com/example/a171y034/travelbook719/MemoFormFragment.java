@@ -38,7 +38,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
 
     public static final String ARGS_CREATEDTIME = "key-createdtime";
 
-    private int mColorLabel = Add.ColorLabel.NONE;
+    private int mColorLabel = AddMemo.ColorLabel.NONE;
 
     private long mCreatedTime = 0;
 
@@ -105,7 +105,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
         Bundle args = getArguments();
         if (args != null) {
             //カラーラベルをセット
-            mColorLabel = args.getInt(ARGS_COLORLABEL, Add.ColorLabel.NONE);
+            mColorLabel = args.getInt(ARGS_COLORLABEL, AddMemo.ColorLabel.NONE);
             mEtInput.setTextColor(getColorResource(mColorLabel));
 
             //値をセット
@@ -178,15 +178,15 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int viewId = v.getId();
         if (viewId == R.id.color_none) {
-            mColorLabel = Add.ColorLabel.NONE;
+            mColorLabel = AddMemo.ColorLabel.NONE;
         } else if (viewId == R.id.color_amber) {
-            mColorLabel = Add.ColorLabel.AMBER;
+            mColorLabel = AddMemo.ColorLabel.AMBER;
         } else if (viewId == R.id.color_pink) {
-            mColorLabel = Add.ColorLabel.PINK;
+            mColorLabel = AddMemo.ColorLabel.PINK;
         } else if (viewId == R.id.color_indigo) {
-            mColorLabel = Add.ColorLabel.INDIGO;
+            mColorLabel = AddMemo.ColorLabel.INDIGO;
         } else if (viewId == R.id.color_green) {
-            mColorLabel = Add.ColorLabel.GREEN;
+            mColorLabel = AddMemo.ColorLabel.GREEN;
         }
         mEtInput.setTextColor(getColorResource(mColorLabel));
     }
@@ -197,16 +197,16 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
      * @param color : カラー
      */
     private int getColorResource(int color) {
-        int resId = Add.ColorLabel.NONE;
-        if (color == Add.ColorLabel.NONE) {
+        int resId = AddMemo.ColorLabel.NONE;
+        if (color == AddMemo.ColorLabel.NONE) {
             resId = getResources().getColor(R.color.material_grey_500);
-        } else if (color == Add.ColorLabel.AMBER) {
+        } else if (color == AddMemo.ColorLabel.AMBER) {
             resId = getResources().getColor(R.color.material_amber_500);
-        } else if (color == Add.ColorLabel.PINK) {
+        } else if (color == AddMemo.ColorLabel.PINK) {
             resId = getResources().getColor(R.color.material_pink_500);
-        } else if (color == Add.ColorLabel.INDIGO) {
+        } else if (color == AddMemo.ColorLabel.INDIGO) {
             resId = getResources().getColor(R.color.material_indigo_500);
-        } else if (color == Add.ColorLabel.GREEN) {
+        } else if (color == AddMemo.ColorLabel.GREEN) {
             resId = getResources().getColor(R.color.material_green_500);
         }
         return resId;

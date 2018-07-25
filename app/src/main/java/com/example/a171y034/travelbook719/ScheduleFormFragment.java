@@ -38,7 +38,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
     public static final String ARGS_CREATEDTIME = "key-createdtime";
 
-    private int mColorLabel = Add.ColorLabel.NONE;
+    private int mColorLabel = AddSchedule.ColorLabel.NONE;
 
     private long mCreatedTime = 0;
 
@@ -105,7 +105,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         Bundle args = getArguments();
         if (args != null) {
             //カラーラベルをセット
-            mColorLabel = args.getInt(ARGS_COLORLABEL, Add.ColorLabel.NONE);
+            mColorLabel = args.getInt(ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
             mEtInput.setTextColor(getColorResource(mColorLabel));
 
             //値をセット
@@ -187,15 +187,15 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         int viewId = v.getId();
         if (viewId == R.id.color_none) {
-            mColorLabel = Add.ColorLabel.NONE;
+            mColorLabel = AddSchedule.ColorLabel.NONE;
         } else if (viewId == R.id.color_amber) {
-            mColorLabel = Add.ColorLabel.AMBER;
+            mColorLabel = AddSchedule.ColorLabel.AMBER;
         } else if (viewId == R.id.color_pink) {
-            mColorLabel = Add.ColorLabel.PINK;
+            mColorLabel = AddSchedule.ColorLabel.PINK;
         } else if (viewId == R.id.color_indigo) {
-            mColorLabel = Add.ColorLabel.INDIGO;
+            mColorLabel = AddSchedule.ColorLabel.INDIGO;
         } else if (viewId == R.id.color_green) {
-            mColorLabel = Add.ColorLabel.GREEN;
+            mColorLabel = AddSchedule.ColorLabel.GREEN;
         }
         mEtInput.setTextColor(getColorResource(mColorLabel));
     }
@@ -206,16 +206,16 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
      * @param color : カラー
      */
     private int getColorResource(int color) {
-        int resId = Add.ColorLabel.NONE;
-        if (color == Add.ColorLabel.NONE) {
+        int resId = AddSchedule.ColorLabel.NONE;
+        if (color == AddSchedule.ColorLabel.NONE) {
             resId = getResources().getColor(R.color.material_grey_500);
-        } else if (color == Add.ColorLabel.AMBER) {
+        } else if (color == AddSchedule.ColorLabel.AMBER) {
             resId = getResources().getColor(R.color.material_amber_500);
-        } else if (color == Add.ColorLabel.PINK) {
+        } else if (color == AddSchedule.ColorLabel.PINK) {
             resId = getResources().getColor(R.color.material_pink_500);
-        } else if (color == Add.ColorLabel.INDIGO) {
+        } else if (color == AddSchedule.ColorLabel.INDIGO) {
             resId = getResources().getColor(R.color.material_indigo_500);
-        } else if (color == Add.ColorLabel.GREEN) {
+        } else if (color == AddSchedule.ColorLabel.GREEN) {
             resId = getResources().getColor(R.color.material_green_500);
         }
         return resId;

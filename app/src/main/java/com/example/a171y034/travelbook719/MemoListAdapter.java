@@ -16,12 +16,12 @@ import java.util.List;
  * Created by 171y034 on 2018/07/24.
  */
 
-public class MemoListAdapter  extends ArrayAdapter<Add> {
+public class MemoListAdapter  extends ArrayAdapter<AddMemo> {
 
     /** フィールド */
     private LayoutInflater mInflator;
 
-    public MemoListAdapter(Context context, List<Add> objects) {
+    public MemoListAdapter(Context context, List<AddMemo> objects) {
         super(context, 0, objects);
         mInflator = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -79,16 +79,16 @@ public class MemoListAdapter  extends ArrayAdapter<Add> {
     private int getColorLabelResource(int color) {
         int resId = R.drawable.bg_colorlabel_grey;
         switch (color) {
-            case Add.ColorLabel.PINK:
+            case AddMemo.ColorLabel.PINK:
                 resId = R.drawable.bg_colorlabel_pink;
                 break;
-            case Add.ColorLabel.INDIGO:
+            case AddMemo.ColorLabel.INDIGO:
                 resId = R.drawable.bg_colorlabel_indigo;
                 break;
-            case Add.ColorLabel.GREEN:
+            case AddMemo.ColorLabel.GREEN:
                 resId = R.drawable.bg_colorlabel_green;
                 break;
-            case Add.ColorLabel.AMBER:
+            case AddMemo.ColorLabel.AMBER:
                 resId = R.drawable.bg_colorlabel_amber;
                 break;
         }

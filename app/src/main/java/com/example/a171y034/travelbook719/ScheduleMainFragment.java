@@ -34,7 +34,7 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
 
     private ScheduleListAdapter mAdapter;
 
-    private List<Add> mAddList;
+    private List<AddSchedule> mAddList;
 
     public static ScheduleMainFragment newInstance() {
         ScheduleMainFragment fragment = new ScheduleMainFragment();
@@ -54,7 +54,7 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
 
         View v = inflater.inflate(R.layout.fragment_schedule_main, container, false);
 
-        //ダミーデータを作成してAdapterにセット
+        //データを作成してAdapterにセット
         mAddList = ((MainActivity) getActivity()).getAddList();
         mAdapter = new ScheduleListAdapter(getActivity(), mAddList);
 
@@ -129,15 +129,15 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
         @Override
         public void onReceive(Context context, Intent intent) {
             //Todoデータを作成
-            int color = intent.getIntExtra(ScheduleFormFragment.ARGS_COLORLABEL, Add.ColorLabel.NONE);
+            int color = intent.getIntExtra(ScheduleFormFragment.ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
             String value = intent.getStringExtra(ScheduleFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(ScheduleFormFragment.ARGS_CREATEDTIME, 0);
-            Add newItem = new Add(color, value, createdTime);
+            AddSchedule newItem = new AddSchedule(color, value, createdTime);
 
             //作成時間を既に存在するデータか確認
             int updateIndex = -1;
             for (int i = 0; i < mAdapter.getCount(); i++) {
-                Add item = mAdapter.getItem(i);
+                AddSchedule item = mAdapter.getItem(i);
                 if (item.getCreatedTime() == newItem.getCreatedTime()) {
                     updateIndex = i;
                 }

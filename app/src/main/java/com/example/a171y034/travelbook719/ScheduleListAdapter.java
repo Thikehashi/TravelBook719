@@ -16,12 +16,12 @@ import java.util.List;
  * Created by 171y034 on 2018/07/19.
  */
 
-public class ScheduleListAdapter extends ArrayAdapter<Add> {
+public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
 
     /** フィールド */
     private LayoutInflater mInflator;
 
-    public ScheduleListAdapter(Context context, List<Add> objects) {
+    public ScheduleListAdapter(Context context, List<AddSchedule> objects) {
         super(context, 0, objects);
         mInflator = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -79,16 +79,16 @@ public class ScheduleListAdapter extends ArrayAdapter<Add> {
     private int getColorLabelResource(int color) {
         int resId = R.drawable.bg_colorlabel_grey;
         switch (color) {
-            case Add.ColorLabel.PINK:
+            case AddSchedule.ColorLabel.PINK:
                 resId = R.drawable.bg_colorlabel_pink;
                 break;
-            case Add.ColorLabel.INDIGO:
+            case AddSchedule.ColorLabel.INDIGO:
                 resId = R.drawable.bg_colorlabel_indigo;
                 break;
-            case Add.ColorLabel.GREEN:
+            case AddSchedule.ColorLabel.GREEN:
                 resId = R.drawable.bg_colorlabel_green;
                 break;
-            case Add.ColorLabel.AMBER:
+            case AddSchedule.ColorLabel.AMBER:
                 resId = R.drawable.bg_colorlabel_amber;
                 break;
         }

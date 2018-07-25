@@ -34,18 +34,12 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
 
     private MemoListAdapter mAdapter;
 
-    private List<Add> mAddList;
+    private List<AddMemo> mAddList;
 
     public static MemoMainFragment newInstance() {
         MemoMainFragment fragment = new MemoMainFragment();
         return fragment;
     }
-
-/*    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-*/
 
     @Nullable
     @Override
@@ -53,6 +47,10 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_memo_main, container, false);
+
+        //データを作成してAdapterにセット
+        mAddList = ((MainActivity) getActivity()).getAddListMemo();
+        mAdapter = new MemoListAdapter(getActivity(), mAddList);
 
         //ListViewを初期化
         ListView listView = (ListView) v.findViewById(R.id.list);
@@ -125,15 +123,15 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
         @Override
         public void onReceive(Context context, Intent intent) {
             //Memoデータを作成
-            int color = intent.getIntExtra(MemoFormFragment.ARGS_COLORLABEL, Add.ColorLabel.NONE);
+            int color = intent.getIntExtra(MemoFormFragment.ARGS_COLORLABEL, AddMemo.ColorLabel.NONE);
             String value = intent.getStringExtra(MemoFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(MemoFormFragment.ARGS_CREATEDTIME, 0);
-            Add newItem = new Add(color, value, createdTime);
+            AddMemo newItem = new AddMemo(color, value, createdTime);
 
             //作成時間を既に存在するデータか確認
             int updateIndex = -1;
             for (int i = 0; i < mAdapter.getCount(); i++) {
-                Add item = mAdapter.getItem(i);
+                AddMemo item = mAdapter.getItem(i);
                 if (item.getCreatedTime() == newItem.getCreatedTime()) {
                     updateIndex = i;
                 }
