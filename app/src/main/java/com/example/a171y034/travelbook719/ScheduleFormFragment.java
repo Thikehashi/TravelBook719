@@ -166,6 +166,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
+                mEtInput.setError("タイトルを入力してください");
             }
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()

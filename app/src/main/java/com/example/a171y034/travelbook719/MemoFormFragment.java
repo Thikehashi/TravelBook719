@@ -161,9 +161,10 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
                 MemoMainFragment fragment = new MemoMainFragment();
                 ft.replace(R.id.content, fragment);
                 ft.commit();
-                
+
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
+                mEtInput.setError("文字を入力してください");
             }
 
             //ソフトウェアキーボードを閉じる
