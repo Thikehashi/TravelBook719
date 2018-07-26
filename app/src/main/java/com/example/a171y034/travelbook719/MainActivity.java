@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private List<AddSchedule> mAddListSchedule;
     private List<AddMemo> mAddListMemo;
+    private List<AddBelongings> mAddListBelongings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity  {
         // データ作成
         mAddListSchedule = AddSchedule.Item();
         mAddListMemo = AddMemo.Item();
+        mAddListBelongings = AddBelongings.Item();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity  {
                             case R.id.navigation_schedule:
                                 selectedFragment =  ScheduleMainFragment.newInstance();
                                 break;
-                            case R.id.navigation_list:
+                            case R.id.navigation_belongings:
                                 selectedFragment = BelongingsMainFragment.newInstance();
                                 break;
                             case R.id.navigation_photo:
@@ -50,16 +52,13 @@ public class MainActivity extends AppCompatActivity  {
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.content, selectedFragment);
                         transaction.commit();
-
                         return true;
-
                     }
                 });
         // 起動から表示
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, ScheduleMainFragment.newInstance());
         transaction.commit();
-//        showScheduleList();
     }
 
     @Override
@@ -72,16 +71,6 @@ public class MainActivity extends AppCompatActivity  {
             super.onBackPressed();
         }
     }
-
-    /**
-     * TODOリスト一覧を表示
-     */
-    public void showScheduleList() {
-        String tag = ScheduleMainFragment.TAG;
-        getSupportFragmentManager().beginTransaction().replace(R.id.content,
-                ScheduleMainFragment.newInstance(), tag).commit();
-    }
-
 
     /*    /**
      * Scheduleフォーム画面を表示
@@ -100,27 +89,45 @@ public class MainActivity extends AppCompatActivity  {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
     }
 
-    /*    /**
- * Memoフォーム画面を表示
- *
- * @param item Memoリストデータ
- */
-    public void showMemoForm(AddMemo item) {
-        String tag = MemoFormFragment.TAG;
-        MemoFormFragment fragment;
-        if (item == null) {
-            fragment = MemoFormFragment.newInstance();
-        } else {
-            fragment = MemoFormFragment.newInstance(item.getColorLabel(),
-                    item.getValue(), item.getCreatedTime());
+        /*    /**
+     * Memoフォーム画面を表示
+     *
+     * @param item Memoリストデータ
+     */
+        public void showMemoForm(AddMemo item) {
+            String tag = MemoFormFragment.TAG;
+            MemoFormFragment fragment;
+            if (item == null) {
+                fragment = MemoFormFragment.newInstance();
+            } else {
+                fragment = MemoFormFragment.newInstance(item.getColorLabel(),
+                        item.getValue(), item.getCreatedTime());
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
-    }
+
+        /*    /**
+    * Belongingsフォーム画面を表示
+    *
+    * @param item Belongingsリストデータ
+    */
+        public void showBelongingsForm(AddBelongings item) {
+            String tag = BelongingsFormFragment.TAG;
+            BelongingsFormFragment fragment;
+            if (item == null) {
+                fragment = BelongingsFormFragment.newInstance();
+            } else {
+                fragment = BelongingsFormFragment.newInstance(item.getColorLabel(),
+                        item.getValue(), item.getCreatedTime());
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
+        }
 
     public List<AddSchedule> getAddList() {
         return mAddListSchedule;
     }
     public List<AddMemo> getAddListMemo() {return mAddListMemo;}
+    public List<AddBelongings> getAddListBelongings() {return mAddListBelongings;}
 
     // Actionバーにmenu_mainの表示
     @Override
