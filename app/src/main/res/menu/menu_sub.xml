@@ -4,8 +4,6 @@
 
     <item
         android:id="@+id/actionok"
-        android:icon="@drawable/ic_check_black_24dp"
-        android:title="Ok"
+        android:icon="@drawable/ic_action_name"
         app:showAsAction="always"/>
-
 </menu>

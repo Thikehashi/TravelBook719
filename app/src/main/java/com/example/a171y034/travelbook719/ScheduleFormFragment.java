@@ -2,7 +2,6 @@ package com.example.a171y034.travelbook719;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -123,14 +122,15 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     // チェックボタンを表示させる
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem menuItem = menu.findItem(MENU_ADD);
+        MenuItem menuItem = menu.findItem(R.id.actionok);
         if (menuItem == null) {
-            //inflater.inflate(R.menu.menu_sub, menu);
-            //menu.findItem(R.id.actionok).setVisible(true);
-            mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
+            inflater.inflate(R.menu.menu_sub, menu);
+            menu.findItem(R.id.actionok).setVisible(true);
+/*            mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                 mMenuAdd.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             }
+*/
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -138,7 +138,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     // チェックボタンを押したときの処理
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == MENU_ADD) {
+        if (item.getItemId() == R.id.actionok) {
             //Scheduleリストを追加
             String value = mEtInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
@@ -156,17 +156,17 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
                 //Broadcastを送信
                 resultData.setAction(ScheduleMainFragment.ACTION_CREATE_SCHEDULE);
                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(resultData);
+
+                // 1つ前のFragmentに戻る
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ScheduleMainFragment fragment = new ScheduleMainFragment();
+                ft.replace(R.id.content, fragment);
+                ft.commit();
+
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
             }
-
-            // 1つ前のFragmentに戻る
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ScheduleMainFragment fragment = new ScheduleMainFragment();
-            ft.replace(R.id.content, fragment);
-            ft.commit();
-
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
                     .getSystemService(Context.INPUT_METHOD_SERVICE);

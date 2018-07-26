@@ -2,7 +2,6 @@ package com.example.a171y034.travelbook719;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -121,14 +120,15 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
     // チェックボタンを表示させる
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem menuItem = menu.findItem(MENU_ADD);
+        MenuItem menuItem = menu.findItem(R.id.actionok);
         if (menuItem == null) {
-            //inflater.inflate(R.menu.menu_sub, menu);
-            //menu.findItem(R.id.actionok).setVisible(true);
-            mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
+            inflater.inflate(R.menu.menu_sub, menu);
+            menu.findItem(R.id.actionok).setVisible(true);
+/*            mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                 mMenuAdd.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             }
+*/
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -136,7 +136,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
     // チェックボタンを押したときの処理
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == MENU_ADD) {
+        if (item.getItemId() == R.id.actionok) {
             //Memoリストを追加
             String value = mEtInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
@@ -154,15 +154,17 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
                 //Broadcastを送信
                 resultData.setAction(MemoMainFragment.ACTION_CREATE_MEMO);
                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(resultData);
+
+                // ひとつ前のFragmentに戻る
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                MemoMainFragment fragment = new MemoMainFragment();
+                ft.replace(R.id.content, fragment);
+                ft.commit();
+                
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
             }
-            // ひとつ前のFragmentに戻る
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            MemoMainFragment fragment = new MemoMainFragment();
-            ft.replace(R.id.content, fragment);
-            ft.commit();
 
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
