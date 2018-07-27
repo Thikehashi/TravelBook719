@@ -31,7 +31,7 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = mInflator.inflate(R.layout.item_list_row, parent, false);
+            convertView = mInflator.inflate(R.layout.item_list_row_belongings, parent, false);
             holder = new ViewHolder();
             holder.tvColorLabel = (TextView) convertView.findViewById(R.id.color_label);
             holder.tvValue = (TextView) convertView.findViewById(R.id.value);

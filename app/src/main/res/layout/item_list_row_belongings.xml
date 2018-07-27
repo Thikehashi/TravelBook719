@@ -34,11 +34,12 @@
 
     <com.example.a171y034.travelbook719.SmoothCheckBox
         android:id="@+id/scb"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="5dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="5dp"
         android:paddingTop="10dp"
-        app:color_checked="@color/colorAccent"/>
+        app:color_checked="@color/colorAccent"
+        android:layout_alignBottom="@+id/color_label"/>
 
     <TextView
         android:id="@+id/created_time"
