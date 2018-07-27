@@ -163,7 +163,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
                 ft.commit();
 
             } else {
-                Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
                 mEtInput.setError("文字を入力してください");
             }
 

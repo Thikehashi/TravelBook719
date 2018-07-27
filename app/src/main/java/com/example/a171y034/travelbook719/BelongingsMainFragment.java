@@ -69,7 +69,6 @@ public class BelongingsMainFragment  extends Fragment implements AdapterView.OnI
                 ((MainActivity) getActivity()).showBelongingsForm(null);
             }
         });
-
         //BroadcastReceiverを登録
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 mAddTodoReceiver, new IntentFilter(ACTION_CREATE_BELONGINGS));

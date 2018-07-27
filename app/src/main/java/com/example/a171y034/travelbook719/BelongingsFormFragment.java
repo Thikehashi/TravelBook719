@@ -112,7 +112,7 @@ public class BelongingsFormFragment extends Fragment implements View.OnClickList
         return rootView;
     }
 
-    // チェックボタンを表示させる
+    // チェックボタン(追加ボタン)を表示させる
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         MenuItem menuItem = menu.findItem(R.id.actionok);
@@ -153,7 +153,7 @@ public class BelongingsFormFragment extends Fragment implements View.OnClickList
                 ft.commit();
 
             } else {
-                Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
                 mEtInput.setError("文字を入力してください");
             }
 

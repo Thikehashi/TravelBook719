@@ -1,0 +1,56 @@
+<!--持ち物リストのアイテム-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/color_label"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/value"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/color_label"
+        android:layout_toEndOf="@+id/color_label"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"/>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/value"
+        android:layout_alignBottom="@+id/value"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/value"
+        android:layout_toRightOf="@+id/value"/>
+
+    <TextView
+        android:id="@+id/created_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/value"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>
