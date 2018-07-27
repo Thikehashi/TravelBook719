@@ -32,15 +32,13 @@
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp"/>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/value"
-        android:layout_alignBottom="@+id/value"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/value"
-        android:layout_toRightOf="@+id/value"/>
+    <com.example.a171y034.travelbook719.SmoothCheckBox
+        android:id="@+id/scb"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:paddingTop="10dp"
+        app:color_checked="@color/colorAccent"/>
 
     <TextView
         android:id="@+id/created_time"
