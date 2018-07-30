@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -35,6 +36,8 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
     private ScheduleListAdapter mAdapter;
 
     private List<AddSchedule> mAddList;
+
+    private TextView textView;
 
     public static ScheduleMainFragment newInstance() {
         ScheduleMainFragment fragment = new ScheduleMainFragment();
@@ -150,5 +153,4 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
 
         }
     };
-
 }

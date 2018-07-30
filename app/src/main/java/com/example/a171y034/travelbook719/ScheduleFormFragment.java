@@ -42,6 +42,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     private long mCreatedTime = 0;
 
     private EditText mEtInput;
+    private EditText mTimeInput;
 
     private boolean mIsTextEdited = false;
 
@@ -100,6 +101,24 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
             }
         });
 
+        // 入力フォーム（日付）のインスタンスを取得
+        mTimeInput = (EditText) rootView.findViewById(R.id.editDate);
+        mTimeInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //テキストの中身が変更されたら編集したと判定
+                mIsTextEdited = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         //編集データを受け取っていたらセット
         Bundle args = getArguments();
         if (args != null) {
@@ -117,6 +136,21 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
         return rootView;
 
+    }
+
+    // 日付入力
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        EditText editText = (EditText)getActivity().findViewById(R.id.editDate);
+        editText.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                TimePickerDialogFragment timePicker = new TimePickerDialogFragment();
+                timePicker.show(getFragmentManager(), "timePicker");
+            }
+        });
     }
 
     // チェックボタンを表示させる
