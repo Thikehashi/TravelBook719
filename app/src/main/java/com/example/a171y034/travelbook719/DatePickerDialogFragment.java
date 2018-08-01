@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
+import android.widget.EditText;
+
+import java.util.Locale;
 
 /**
  * Created by 171y034 on 2018/07/30.
@@ -29,7 +32,11 @@ public class DatePickerDialogFragment extends DialogFragment implements DatePick
     }
 
     @Override
-    public void onDateSet(android.widget.DatePicker view, int year, int monthOfYear, int dayOfMonth){
-
+    public void onDateSet(android.widget.DatePicker view, int year, int month, int day){
+        // 日付が選択された時の処理
+        // 日付テキスト
+        EditText editText = (EditText) getActivity().findViewById(R.id.editDate);
+        String str = String.format(Locale.JAPAN, "%d年%d月%d日",year, month+1, day);
+        editText.setText( str );
     }
 }

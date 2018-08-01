@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
+import android.widget.EditText;
 import android.widget.TimePicker;
+
+import java.util.Locale;
 
 /**
  * Created by 171y034 on 2018/07/30.
@@ -31,5 +34,8 @@ public class TimePickerDialogFragment extends DialogFragment implements TimePick
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute){
         // 時刻が選択された時の処理
+        EditText editText = (EditText) getActivity().findViewById(R.id.editTime);
+        String str = String.format(Locale.JAPAN, "%d時%d分", hourOfDay, minute);
+        editText.setText( str );
     }
 }

@@ -43,7 +43,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     private long mCreatedTime = 0;
 
     private EditText mEtInput;
-    private EditText mTimeInput;
+    private EditText mDateInput;
 
     private boolean mIsTextEdited = false;
 
@@ -103,8 +103,8 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         });
 
         // 入力フォーム（日付）のインスタンスを取得
-        mTimeInput = (EditText) rootView.findViewById(R.id.editDate);
-        mTimeInput.addTextChangedListener(new TextWatcher() {
+        mDateInput = (EditText) rootView.findViewById(R.id.editDate);
+        mDateInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -142,35 +142,42 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     // 日付入力
     //  時刻入力
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
 
         // 日付テキスト
-        EditText editText = (EditText)getActivity().findViewById(R.id.editDate);
+        EditText editText = (EditText) getActivity().findViewById(R.id.editDate);
         // 時刻テキスト
-        EditText editTime = (EditText)getActivity().findViewById(R.id.editTime);
+        EditText editTime = (EditText) getActivity().findViewById(R.id.editTime);
         // キーボードを非表示
         editText.setKeyListener(null);
         editTime.setKeyListener(null);
 
-        editText.setOnClickListener(new View.OnClickListener(){
+        editText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                    DialogFragment dateDialog = new DatePickerDialogFragment();
-                    dateDialog.show(getFragmentManager(), "dialog");
-
+            public void onClick(View v) {
+                DatePickerDialogFragment dateDialog = new DatePickerDialogFragment();
+                dateDialog.show(getFragmentManager(), "dialog");
             }
         });
 
-        editTime.setOnClickListener(new View.OnClickListener(){
+        editTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 DialogFragment timeDialog = new TimePickerDialogFragment();
                 timeDialog.show(getFragmentManager(), "dialog");
             }
         });
-    }
 
+/*        // データを受け取ったらセット
+        Bundle args = getArguments();
+        if(args != null){
+            // 値をセット
+            String date = args.getString(ARGS_VALUE);
+            mDateInput.setText(date);
+        }
+*/
+    }
 
     // チェックボタンを表示させる
     @Override
@@ -194,6 +201,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         if (item.getItemId() == R.id.actionok) {
             //Scheduleリストを追加
             String value = mEtInput.getText().toString();
+            String time = mDateInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
                 resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
@@ -220,6 +228,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
                 mEtInput.setError("タイトルを入力してください");
+                mDateInput.setError("日付を入力してください");
             }
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
