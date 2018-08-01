@@ -168,15 +168,6 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
                 timeDialog.show(getFragmentManager(), "dialog");
             }
         });
-
-/*        // データを受け取ったらセット
-        Bundle args = getArguments();
-        if(args != null){
-            // 値をセット
-            String date = args.getString(ARGS_VALUE);
-            mDateInput.setText(date);
-        }
-*/
     }
 
     // チェックボタンを表示させる
