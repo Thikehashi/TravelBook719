@@ -26,7 +26,8 @@ public class TimePickerDialogFragment extends DialogFragment implements TimePick
         return timePickerDialog;
     }
 
-    public void onTimeSet(TimePicker view, int hourOfday, int minute){
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute){
         // 時刻が選択された時の処理
     }
 }

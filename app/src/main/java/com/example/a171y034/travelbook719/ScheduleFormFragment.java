@@ -111,7 +111,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //テキストの中身が変更されたら編集したと判定
-                mIsTextEdited = true;
+                mIsTextEdited = false;
             }
 
             @Override
@@ -142,8 +142,8 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     @Override
     public void onStart(){
         super.onStart();
-
         EditText editText = (EditText)getActivity().findViewById(R.id.editDate);
+        editText.setKeyListener(null);
         editText.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -175,6 +175,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         if (item.getItemId() == R.id.actionok) {
             //Scheduleリストを追加
             String value = mEtInput.getText().toString();
+            
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
                 resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
@@ -201,6 +202,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
             } else {
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
                 mEtInput.setError("タイトルを入力してください");
+                //mTimeInput.setError("日付を入力してください");
             }
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
