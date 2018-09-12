@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AddSchedule {
 
-    private int colorLabel;
+//    private int colorLabel;
 
     private long createdTime;
 
@@ -24,19 +24,21 @@ public class AddSchedule {
         public static final int AMBER = 5;
     }
 
-    public AddSchedule(int colorLabel, String value, long createdTime) {
-        this.colorLabel = colorLabel;
+    public AddSchedule( String value, long createdTime) {
+ //       this.colorLabel = colorLabel;
         this.value = value;
         this.createdTime = createdTime;
     }
 
-    public int getColorLabel() {
+ /*   public int getColorLabel() {
         return colorLabel;
     }
+*/
 
-    public void setColorLabel(int colorLabel) {
+/*    public void setColorLabel(int colorLabel) {
         this.colorLabel = colorLabel;
     }
+*/
 
     public String getValue() {
         return value;

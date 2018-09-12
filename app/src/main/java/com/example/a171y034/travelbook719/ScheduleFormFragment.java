@@ -26,7 +26,7 @@ import android.widget.Toast;
  * Created by 171y034 on 2018/07/20.
  */
 
-public class ScheduleFormFragment extends Fragment implements View.OnClickListener {
+public class ScheduleFormFragment extends Fragment /*implements View.OnClickListener*/ {
 
     public static final String TAG = ScheduleFormFragment.class.getSimpleName();
 
@@ -77,13 +77,13 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
 
         View rootView = inflater.inflate(R.layout.fragment_schedule_add, container, false);
 
-        //カラーラベルのインスタンスを取得
+/*        //カラーラベルのインスタンスを取得
         rootView.findViewById(R.id.color_none).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_amber).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_green).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_indigo).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_pink).setOnClickListener((View.OnClickListener) this);
-
+*/
         //入力フォームのインスタンスを取得
         mEtInput = (EditText) rootView.findViewById(R.id.input);
         mEtInput.addTextChangedListener(new TextWatcher() {
@@ -123,10 +123,10 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         //編集データを受け取っていたらセット
         Bundle args = getArguments();
         if (args != null) {
-            //カラーラベルをセット
+/*            //カラーラベルをセット
             mColorLabel = args.getInt(ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
             mEtInput.setTextColor(getColorResource(mColorLabel));
-
+*/
             //値をセット
             String value = args.getString(ARGS_VALUE);
             mEtInput.setText(value);
@@ -231,7 +231,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+/*    @Override
     public void onClick(View v) {
         int viewId = v.getId();
         if (viewId == R.id.color_none) {
@@ -253,6 +253,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
      *
      * @param color : カラー
      */
+/*
     private int getColorResource(int color) {
         int resId = AddSchedule.ColorLabel.NONE;
         if (color == AddSchedule.ColorLabel.NONE) {
@@ -268,4 +269,5 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         }
         return resId;
     }
+    */
 }

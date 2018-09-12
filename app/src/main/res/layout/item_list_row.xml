@@ -5,17 +5,6 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/color_label"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_centerVertical="true"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="24sp" />
-
-    <TextView
         android:id="@+id/value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
