@@ -48,6 +48,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
     private EditText mEtInput;
     private EditText mDateInput;
     private EditText mStartTime;
+    private EditText mEndTime;
 
     private boolean mIsTextEdited = false;
 
@@ -126,6 +127,46 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
             }
         });
 
+        // 入力フォーム(開始予定時刻)のインスタンスを取得
+        mStartTime = (EditText) rootView.findViewById(R.id.editstartTime);
+        mStartTime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // テキストの中身が変更されたら編集したと判定
+                mIsTextEdited = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        // 入力フォーム(終了予定時刻)のインスタンスを取得
+        mEndTime = (EditText) rootView.findViewById(R.id.editendTime);
+        mEndTime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // テキストの中身が変更されたら編集したと判定
+                mIsTextEdited = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         //編集データを受け取っていたらセット
         Bundle args = getArguments();
         if (args != null) {
@@ -139,6 +180,10 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
             //作成時間をセット
             mCreatedTime = args.getLong(ARGS_CREATEDTIME, 0);
+
+            //開始予定時刻をセット
+            String time = args.getString(ARGS_TIME);
+            mStartTime.setText(time);
         }
 
         return rootView;
@@ -155,7 +200,6 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         // 日付テキスト
         EditText editDate = (EditText) getActivity().findViewById(R.id.editDate);
         // 時刻テキスト
-        m
         EditText editStartTime = (EditText) getActivity().findViewById(editstartTime);
         EditText editEndTime = (EditText) getActivity().findViewById(editendTime);
         // キーボードを非表示
@@ -210,7 +254,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         if (item.getItemId() == R.id.actionok) {
             //Scheduleリストを追加
             String value = mEtInput.getText().toString();
-            String time = mDateInput.getText().toString();
+            String time = mStartTime.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
                 //resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
@@ -239,6 +283,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
                 Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
                 mEtInput.setError("タイトルを入力してください");
                 mDateInput.setError("日付を入力してください");
+                mStartTime.setError("開始予定時刻を入力してください");
             }
             //ソフトウェアキーボードを閉じる
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()

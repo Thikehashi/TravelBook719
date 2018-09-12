@@ -127,7 +127,7 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
         public void onReceive(Context context, Intent intent) {
             //スケジュールデータを作成
 //            int color = intent.getIntExtra(ScheduleFormFragment.ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
-            String time = intent.getStringExtra(ScheduleMainFragment.ARGS_TIME)
+            String time = intent.getStringExtra(ScheduleFormFragment.ARGS_TIME);
             String value = intent.getStringExtra(ScheduleFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(ScheduleFormFragment.ARGS_CREATEDTIME, 0);
             AddSchedule newItem = new AddSchedule(time, value, createdTime);
