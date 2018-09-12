@@ -22,6 +22,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static com.example.a171y034.travelbook719.R.id.editendTime;
+import static com.example.a171y034.travelbook719.R.id.editstartTime;
+
 /**
  * Created by 171y034 on 2018/07/20.
  */
@@ -146,14 +149,16 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         super.onStart();
 
         // 日付テキスト
-        EditText editText = (EditText) getActivity().findViewById(R.id.editDate);
+        EditText editDate = (EditText) getActivity().findViewById(R.id.editDate);
         // 時刻テキスト
-        EditText editTime = (EditText) getActivity().findViewById(R.id.editTime);
+        EditText editStartTime = (EditText) getActivity().findViewById(editstartTime);
+        EditText editEndTime = (EditText) getActivity().findViewById(editendTime);
         // キーボードを非表示
-        editText.setKeyListener(null);
-        editTime.setKeyListener(null);
+        editDate.setKeyListener(null);
+        editStartTime.setKeyListener(null);
+        editEndTime.setKeyListener(null);
 
-        editText.setOnClickListener(new View.OnClickListener() {
+        editDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialogFragment dateDialog = new DatePickerDialogFragment();
@@ -161,10 +166,18 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
             }
         });
 
-        editTime.setOnClickListener(new View.OnClickListener() {
+        editStartTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment timeDialog = new TimePickerDialogFragment();
+                timeDialog.show(getFragmentManager(), "dialog");
+            }
+        });
+
+        editEndTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timeDialog = new TimePickerDialogFragment2();
                 timeDialog.show(getFragmentManager(), "dialog");
             }
         });
