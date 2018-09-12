@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AddBelongings{
 
-    private int colorLabel;
+//    private int colorLabel;
 
     private long createdTime;
 
@@ -24,19 +24,20 @@ public class AddBelongings{
         public static final int AMBER = 5;
     }
 
-    public AddBelongings(int colorLabel, String value, long createdTime) {
-        this.colorLabel = colorLabel;
+    public AddBelongings(String value, long createdTime) {
+//        this.colorLabel = colorLabel;
         this.value = value;
         this.createdTime = createdTime;
     }
 
-    public int getColorLabel() {
+/*    public int getColorLabel() {
         return colorLabel;
     }
 
     public void setColorLabel(int colorLabel) {
         this.colorLabel = colorLabel;
     }
+*/
 
     public String getValue() {
         return value;

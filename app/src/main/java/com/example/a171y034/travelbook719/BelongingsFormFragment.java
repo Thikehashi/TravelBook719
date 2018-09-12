@@ -24,7 +24,7 @@ import android.widget.Toast;
 /**
  * Created by 171y034 on 2018/07/24.
  */
-public class BelongingsFormFragment extends Fragment implements View.OnClickListener {
+public class BelongingsFormFragment extends Fragment /*implements View.OnClickListener*/ {
 
     public static final String TAG = BelongingsFormFragment.class.getSimpleName();
 
@@ -70,12 +70,13 @@ public class BelongingsFormFragment extends Fragment implements View.OnClickList
 
         View rootView = inflater.inflate(R.layout.fragment_belongings_add, container, false);
 
-        //カラーラベルのインスタンスを取得
+/*        //カラーラベルのインスタンスを取得
         rootView.findViewById(R.id.color_none).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_amber).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_green).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_indigo).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.color_pink).setOnClickListener((View.OnClickListener) this);
+*/
 
         //入力フォームのインスタンスを取得
         mEtInput = (EditText) rootView.findViewById(R.id.input);
@@ -98,9 +99,10 @@ public class BelongingsFormFragment extends Fragment implements View.OnClickList
         //編集データを受け取っていたらセット
         Bundle args = getArguments();
         if (args != null) {
-            //カラーラベルをセット
+/*            //カラーラベルをセット
             mColorLabel = args.getInt(ARGS_COLORLABEL, AddBelongings.ColorLabel.NONE);
             mEtInput.setTextColor(getColorResource(mColorLabel));
+*/
 
             //値をセット
             String value = args.getString(ARGS_VALUE);
@@ -167,7 +169,7 @@ public class BelongingsFormFragment extends Fragment implements View.OnClickList
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+/*    @Override
     public void onClick(View v) {
         int viewId = v.getId();
         if (viewId == R.id.color_none) {
@@ -183,12 +185,14 @@ public class BelongingsFormFragment extends Fragment implements View.OnClickList
         }
         mEtInput.setTextColor(getColorResource(mColorLabel));
     }
-
+*/
+/*
     /**
      * カラーラベルに応じたカラーリソースを返却.
      *
      * @param color : カラー
      */
+/*
     private int getColorResource(int color) {
         int resId = AddBelongings.ColorLabel.NONE;
         if (color == AddBelongings.ColorLabel.NONE) {
@@ -204,4 +208,5 @@ public class BelongingsFormFragment extends Fragment implements View.OnClickList
         }
         return resId;
     }
+*/
 }

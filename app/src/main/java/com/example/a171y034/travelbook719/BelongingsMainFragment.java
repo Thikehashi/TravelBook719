@@ -121,11 +121,11 @@ public class BelongingsMainFragment  extends Fragment implements AdapterView.OnI
     BroadcastReceiver mAddTodoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //Memoデータを作成
-            int color = intent.getIntExtra(BelongingsFormFragment.ARGS_COLORLABEL, AddBelongings.ColorLabel.NONE);
+            //Belongingsデータを作成
+//            int color = intent.getIntExtra(BelongingsFormFragment.ARGS_COLORLABEL, AddBelongings.ColorLabel.NONE);
             String value = intent.getStringExtra(BelongingsFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(BelongingsFormFragment.ARGS_CREATEDTIME, 0);
-            AddBelongings newItem = new AddBelongings(color, value, createdTime);
+            AddBelongings newItem = new AddBelongings(value, createdTime);
 
             //作成時間を既に存在するデータか確認
             int updateIndex = -1;

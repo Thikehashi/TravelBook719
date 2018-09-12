@@ -116,8 +116,7 @@ public class MainActivity extends AppCompatActivity  {
             if (item == null) {
                 fragment = BelongingsFormFragment.newInstance();
             } else {
-                fragment = BelongingsFormFragment.newInstance(item.getColorLabel(),
-                        item.getValue(), item.getCreatedTime());
+                fragment = BelongingsFormFragment.newInstance();
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
         }

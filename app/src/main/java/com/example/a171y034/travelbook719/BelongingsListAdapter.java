@@ -33,7 +33,7 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
         if (convertView == null) {
             convertView = mInflator.inflate(R.layout.item_list_row_belongings, parent, false);
             holder = new ViewHolder();
-            holder.tvColorLabel = (TextView) convertView.findViewById(R.id.color_label);
+//            holder.tvColorLabel = (TextView) convertView.findViewById(R.id.color_label);
             holder.tvValue = (TextView) convertView.findViewById(R.id.value);
             holder.tvCreatedTime = (TextView) convertView.findViewById(R.id.created_time);
             convertView.setTag(holder);
@@ -47,12 +47,13 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
             holder.tvValue.setText(value);
         }
 
-        //カラーラベルをセット
+/*        //カラーラベルをセット
         int color = getItem(position).getColorLabel();
         holder.tvColorLabel.setBackgroundResource(getColorLabelResource(color));
         if (!TextUtils.isEmpty(value)) {
             holder.tvColorLabel.setText(value.substring(0, 1));
         }
+*/
 
         //日付をセット
         String createdtime = getCreatedTime(getItem(position).getCreatedTime());
@@ -74,8 +75,9 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
     /**
      * カラーラベルのdrawableリソースIDを返却.
      *
-     * @param color : カラー
+     * @param //color : カラー
      */
+/*
     private int getColorLabelResource(int color) {
         int resId = R.drawable.bg_colorlabel_grey;
         switch (color) {
@@ -94,6 +96,7 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
         }
         return resId;
     }
+*/
 
     private class ViewHolder {
 

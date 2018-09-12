@@ -8,18 +8,14 @@
                 android:gravity="center"
                 tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/color_label"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/scb"
-        android:layout_toEndOf="@+id/scb"/>
+    <com.example.a171y034.travelbook719.SmoothCheckBox
+        android:id="@+id/scb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingTop="10dp"
+        app:color_checked="@color/colorAccent"/>
 
     <TextView
         android:id="@+id/value"
@@ -28,19 +24,8 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/color_label"
-        android:layout_toEndOf="@+id/color_label"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"/>
-
-    <com.example.a171y034.travelbook719.SmoothCheckBox
-        android:id="@+id/scb"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="5dp"
-        android:paddingTop="10dp"
-        app:color_checked="@color/colorAccent"
-        />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <TextView
         android:id="@+id/created_time"
