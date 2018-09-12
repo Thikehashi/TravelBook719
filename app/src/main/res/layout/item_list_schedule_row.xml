@@ -6,24 +6,17 @@
 
 
     <TextView
-        android:id="@+id/Time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft ="true"
-        android:layout_below="@+id/value"
-        android:gravity="center"
-        android:textSize="12sp"/>
-
-    <TextView
         android:id="@+id/value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_toEndOf="@+id/Time"
+        android:layout_toRightOf="@+id/Time"
         android:ellipsize="end"
         android:maxLines="2"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/created_time"
@@ -35,5 +28,25 @@
         android:gravity="center"
         android:textSize="12sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/StartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/value"
+        android:layout_alignBottom="@+id/value"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/EndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/created_time"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
+
 
 </RelativeLayout>

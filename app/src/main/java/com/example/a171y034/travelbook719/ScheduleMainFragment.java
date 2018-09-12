@@ -128,9 +128,10 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
             //スケジュールデータを作成
 //            int color = intent.getIntExtra(ScheduleFormFragment.ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
             String time = intent.getStringExtra(ScheduleFormFragment.ARGS_TIME);
+            String endTime = intent.getStringExtra(ScheduleFormFragment.ARGS_ENDTIME);
             String value = intent.getStringExtra(ScheduleFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(ScheduleFormFragment.ARGS_CREATEDTIME, 0);
-            AddSchedule newItem = new AddSchedule(time, value, createdTime);
+            AddSchedule newItem = new AddSchedule(time, endTime, value, createdTime);
 
             //作成時間を既に存在するデータか確認
             int updateIndex = -1;

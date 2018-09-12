@@ -15,7 +15,9 @@ public class AddSchedule {
 
     private String value;
 
-    private String time;
+    private String startTime;
+
+    private String endTime;
 
     public static interface ColorLabel {
 
@@ -26,9 +28,10 @@ public class AddSchedule {
         public static final int AMBER = 5;
     }
 
-    public AddSchedule( String time, String value, long createdTime) {
+    public AddSchedule( String startTime, String endTime, String value, long createdTime) {
  //       this.colorLabel = colorLabel;
-        this.time = time;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.value = value;
         this.createdTime = createdTime;
     }
@@ -43,9 +46,13 @@ public class AddSchedule {
     }
 */
 
-    public String getTime(){ return time; }
+    public String getStartTime(){ return startTime; }
 
-    public void setTime(String time){ this.time = value; }
+    public void setStartTime(String startTime){ this.startTime = value; }
+
+    public String getEndTime(){return endTime;}
+
+    public void setEndTime(String endTime){this.endTime = value;}
 
     public String getValue() {
         return value;

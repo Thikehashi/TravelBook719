@@ -37,6 +37,8 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
     public static final String ARGS_TIME = "key-time";
 
+    public static final String ARGS_ENDTIME = "key-endtime";
+
     public static final String ARGS_VALUE = "key-value";
 
     public static final String ARGS_CREATEDTIME = "key-createdtime";
@@ -58,11 +60,12 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         return new ScheduleFormFragment();
     }
 
-    public static ScheduleFormFragment newInstance(String time, String value, long createdTime) {
+    public static ScheduleFormFragment newInstance(String time, String endTime, String value, long createdTime) {
         ScheduleFormFragment fragment = new ScheduleFormFragment();
         Bundle args = new Bundle();
 //        args.putInt(ARGS_COLORLABEL, colorLabel);
         args.putString(ARGS_TIME, time);
+        args.putString(ARGS_ENDTIME, endTime);
         args.putString(ARGS_VALUE, value);
         args.putLong(ARGS_CREATEDTIME, createdTime);
         fragment.setArguments(args);
@@ -184,6 +187,10 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
             //開始予定時刻をセット
             String time = args.getString(ARGS_TIME);
             mStartTime.setText(time);
+
+            // 終了予定時刻をセット
+            String endTime = args.getString(ARGS_ENDTIME);
+            mEndTime.setText(endTime);
         }
 
         return rootView;
@@ -255,10 +262,12 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
             //Scheduleリストを追加
             String value = mEtInput.getText().toString();
             String time = mStartTime.getText().toString();
+            String endTime = mEndTime.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
                 //resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
                 resultData.putExtra(ARGS_TIME, time);
+                resultData.putExtra(ARGS_ENDTIME, endTime);
                 resultData.putExtra(ARGS_VALUE, value);
                 Toast.makeText(getActivity(), "追加しました", Toast.LENGTH_SHORT).show();
                 if (mCreatedTime == 0) {
