@@ -34,11 +34,18 @@ public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
             convertView = mInflator.inflate(R.layout.item_list_schedule_row, parent, false);
             holder = new ViewHolder();
 //            holder.tvColorLabel = (TextView) convertView.findViewById(R.id.color_label);
+            holder.tvTime = (TextView) convertView.findViewById(R.id.Time);
             holder.tvValue = (TextView) convertView.findViewById(R.id.value);
             holder.tvCreatedTime = (TextView) convertView.findViewById(R.id.created_time);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
+        }
+
+        // 時刻をセット
+        String time = getItem(position).getTime();
+        if(!TextUtils.isEmpty(time)){
+            holder.tvTime.setText(time);
         }
 
         //値をセット
@@ -100,6 +107,8 @@ public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
     private class ViewHolder {
 
         TextView tvColorLabel;
+
+        TextView tvTime;
 
         TextView tvCreatedTime;
 

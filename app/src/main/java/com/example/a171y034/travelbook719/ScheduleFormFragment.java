@@ -35,7 +35,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
     private static final int MENU_ADD = 1;
 
-    public static final String ARGS_COLORLABEL = "key-colorlabel";
+    public static final String ARGS_TIME = "key-time";
 
     public static final String ARGS_VALUE = "key-value";
 
@@ -47,6 +47,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
     private EditText mEtInput;
     private EditText mDateInput;
+    private EditText mStartTime;
 
     private boolean mIsTextEdited = false;
 
@@ -56,10 +57,11 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         return new ScheduleFormFragment();
     }
 
-    public static ScheduleFormFragment newInstance(String value, long createdTime) {
+    public static ScheduleFormFragment newInstance(String time, String value, long createdTime) {
         ScheduleFormFragment fragment = new ScheduleFormFragment();
         Bundle args = new Bundle();
 //        args.putInt(ARGS_COLORLABEL, colorLabel);
+        args.putString(ARGS_TIME, time);
         args.putString(ARGS_VALUE, value);
         args.putLong(ARGS_CREATEDTIME, createdTime);
         fragment.setArguments(args);
@@ -153,6 +155,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         // 日付テキスト
         EditText editDate = (EditText) getActivity().findViewById(R.id.editDate);
         // 時刻テキスト
+        m
         EditText editStartTime = (EditText) getActivity().findViewById(editstartTime);
         EditText editEndTime = (EditText) getActivity().findViewById(editendTime);
         // キーボードを非表示
@@ -210,7 +213,8 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
             String time = mDateInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
-                resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
+                //resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
+                resultData.putExtra(ARGS_TIME, time);
                 resultData.putExtra(ARGS_VALUE, value);
                 Toast.makeText(getActivity(), "追加しました", Toast.LENGTH_SHORT).show();
                 if (mCreatedTime == 0) {

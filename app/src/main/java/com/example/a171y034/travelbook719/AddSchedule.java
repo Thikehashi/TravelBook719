@@ -15,6 +15,8 @@ public class AddSchedule {
 
     private String value;
 
+    private String time;
+
     public static interface ColorLabel {
 
         public static final int NONE = 1;
@@ -24,8 +26,9 @@ public class AddSchedule {
         public static final int AMBER = 5;
     }
 
-    public AddSchedule( String value, long createdTime) {
+    public AddSchedule( String time, String value, long createdTime) {
  //       this.colorLabel = colorLabel;
+        this.time = time;
         this.value = value;
         this.createdTime = createdTime;
     }
@@ -39,6 +42,10 @@ public class AddSchedule {
         this.colorLabel = colorLabel;
     }
 */
+
+    public String getTime(){ return time; }
+
+    public void setTime(String time){ this.time = value; }
 
     public String getValue() {
         return value;
