@@ -24,7 +24,7 @@ import android.widget.Toast;
 /**
  * Created by 171y034 on 2018/07/24.
  */
-public class BelongingsFormFragment extends Fragment /*implements View.OnClickListener*/ {
+public class BelongingsFormFragment extends Fragment {
 
     public static final String TAG = BelongingsFormFragment.class.getSimpleName();
 
@@ -49,7 +49,6 @@ public class BelongingsFormFragment extends Fragment /*implements View.OnClickLi
     public static BelongingsFormFragment newInstance(String value, long createdTime) {
         BelongingsFormFragment fragment = new BelongingsFormFragment();
         Bundle args = new Bundle();
-//        args.putInt(ARGS_COLORLABEL, colorLabel);
         args.putString(ARGS_VALUE, value);
         args.putLong(ARGS_CREATEDTIME, createdTime);
         fragment.setArguments(args);
@@ -69,14 +68,6 @@ public class BelongingsFormFragment extends Fragment /*implements View.OnClickLi
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_belongings_add, container, false);
-
-/*        //カラーラベルのインスタンスを取得
-        rootView.findViewById(R.id.color_none).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_amber).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_green).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_indigo).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_pink).setOnClickListener((View.OnClickListener) this);
-*/
 
         //入力フォームのインスタンスを取得
         mEtInput = (EditText) rootView.findViewById(R.id.input);
@@ -99,10 +90,6 @@ public class BelongingsFormFragment extends Fragment /*implements View.OnClickLi
         //編集データを受け取っていたらセット
         Bundle args = getArguments();
         if (args != null) {
-/*            //カラーラベルをセット
-            mColorLabel = args.getInt(ARGS_COLORLABEL, AddBelongings.ColorLabel.NONE);
-            mEtInput.setTextColor(getColorResource(mColorLabel));
-*/
 
             //値をセット
             String value = args.getString(ARGS_VALUE);
@@ -167,45 +154,4 @@ public class BelongingsFormFragment extends Fragment /*implements View.OnClickLi
         }
         return super.onOptionsItemSelected(item);
     }
-
-/*    @Override
-    public void onClick(View v) {
-        int viewId = v.getId();
-        if (viewId == R.id.color_none) {
-            mColorLabel = AddBelongings.ColorLabel.NONE;
-        } else if (viewId == R.id.color_amber) {
-            mColorLabel = AddBelongings.ColorLabel.AMBER;
-        } else if (viewId == R.id.color_pink) {
-            mColorLabel = AddBelongings.ColorLabel.PINK;
-        } else if (viewId == R.id.color_indigo) {
-            mColorLabel = AddBelongings.ColorLabel.INDIGO;
-        } else if (viewId == R.id.color_green) {
-            mColorLabel = AddBelongings.ColorLabel.GREEN;
-        }
-        mEtInput.setTextColor(getColorResource(mColorLabel));
-    }
-*/
-/*
-    /**
-     * カラーラベルに応じたカラーリソースを返却.
-     *
-     * @param color : カラー
-     */
-/*
-    private int getColorResource(int color) {
-        int resId = AddBelongings.ColorLabel.NONE;
-        if (color == AddBelongings.ColorLabel.NONE) {
-            resId = getResources().getColor(R.color.material_grey_500);
-        } else if (color == AddBelongings.ColorLabel.AMBER) {
-            resId = getResources().getColor(R.color.material_amber_500);
-        } else if (color == AddBelongings.ColorLabel.PINK) {
-            resId = getResources().getColor(R.color.material_pink_500);
-        } else if (color == AddBelongings.ColorLabel.INDIGO) {
-            resId = getResources().getColor(R.color.material_indigo_500);
-        } else if (color == AddBelongings.ColorLabel.GREEN) {
-            resId = getResources().getColor(R.color.material_green_500);
-        }
-        return resId;
-    }
-*/
 }

@@ -122,7 +122,6 @@ public class BelongingsMainFragment  extends Fragment implements AdapterView.OnI
         @Override
         public void onReceive(Context context, Intent intent) {
             //Belongingsデータを作成
-//            int color = intent.getIntExtra(BelongingsFormFragment.ARGS_COLORLABEL, AddBelongings.ColorLabel.NONE);
             String value = intent.getStringExtra(BelongingsFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(BelongingsFormFragment.ARGS_CREATEDTIME, 0);
             AddBelongings newItem = new AddBelongings(value, createdTime);

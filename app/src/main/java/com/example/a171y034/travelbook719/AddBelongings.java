@@ -9,8 +9,6 @@ import java.util.List;
 
 public class AddBelongings{
 
-//    private int colorLabel;
-
     private long createdTime;
 
     private String value;
@@ -25,19 +23,9 @@ public class AddBelongings{
     }
 
     public AddBelongings(String value, long createdTime) {
-//        this.colorLabel = colorLabel;
         this.value = value;
         this.createdTime = createdTime;
     }
-
-/*    public int getColorLabel() {
-        return colorLabel;
-    }
-
-    public void setColorLabel(int colorLabel) {
-        this.colorLabel = colorLabel;
-    }
-*/
 
     public String getValue() {
         return value;

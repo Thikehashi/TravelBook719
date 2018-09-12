@@ -33,7 +33,6 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
         if (convertView == null) {
             convertView = mInflator.inflate(R.layout.item_list_row_belongings, parent, false);
             holder = new ViewHolder();
-//            holder.tvColorLabel = (TextView) convertView.findViewById(R.id.color_label);
             holder.tvValue = (TextView) convertView.findViewById(R.id.value);
             holder.tvCreatedTime = (TextView) convertView.findViewById(R.id.created_time);
             convertView.setTag(holder);
@@ -46,14 +45,6 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
         if (!TextUtils.isEmpty(value)) {
             holder.tvValue.setText(value);
         }
-
-/*        //カラーラベルをセット
-        int color = getItem(position).getColorLabel();
-        holder.tvColorLabel.setBackgroundResource(getColorLabelResource(color));
-        if (!TextUtils.isEmpty(value)) {
-            holder.tvColorLabel.setText(value.substring(0, 1));
-        }
-*/
 
         //日付をセット
         String createdtime = getCreatedTime(getItem(position).getCreatedTime());
@@ -72,35 +63,8 @@ public class BelongingsListAdapter extends ArrayAdapter<AddBelongings> {
         return sdf.format(date);
     }
 
-    /**
-     * カラーラベルのdrawableリソースIDを返却.
-     *
-     * @param //color : カラー
-     */
-/*
-    private int getColorLabelResource(int color) {
-        int resId = R.drawable.bg_colorlabel_grey;
-        switch (color) {
-            case AddBelongings.ColorLabel.PINK:
-                resId = R.drawable.bg_colorlabel_pink;
-                break;
-            case AddBelongings.ColorLabel.INDIGO:
-                resId = R.drawable.bg_colorlabel_indigo;
-                break;
-            case AddBelongings.ColorLabel.GREEN:
-                resId = R.drawable.bg_colorlabel_green;
-                break;
-            case AddBelongings.ColorLabel.AMBER:
-                resId = R.drawable.bg_colorlabel_amber;
-                break;
-        }
-        return resId;
-    }
-*/
 
     private class ViewHolder {
-
-        TextView tvColorLabel;
 
         TextView tvCreatedTime;
 
