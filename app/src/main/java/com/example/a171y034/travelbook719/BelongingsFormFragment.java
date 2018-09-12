@@ -46,10 +46,10 @@ public class BelongingsFormFragment extends Fragment /*implements View.OnClickLi
         return new BelongingsFormFragment();
     }
 
-    public static BelongingsFormFragment newInstance(int colorLabel, String value, long createdTime) {
+    public static BelongingsFormFragment newInstance(String value, long createdTime) {
         BelongingsFormFragment fragment = new BelongingsFormFragment();
         Bundle args = new Bundle();
-        args.putInt(ARGS_COLORLABEL, colorLabel);
+//        args.putInt(ARGS_COLORLABEL, colorLabel);
         args.putString(ARGS_VALUE, value);
         args.putLong(ARGS_CREATEDTIME, createdTime);
         fragment.setArguments(args);

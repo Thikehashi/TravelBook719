@@ -140,7 +140,7 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
                 }
             }
             if (updateIndex == -1) {
-                //既存データがなければ新規Todoとして追加
+                //既存データがなければ新規として追加
                 mAddList.add(newItem);
             } else {
                 //既存データがあれば上書き

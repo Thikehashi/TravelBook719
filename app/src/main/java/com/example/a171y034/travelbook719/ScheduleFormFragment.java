@@ -56,10 +56,10 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         return new ScheduleFormFragment();
     }
 
-    public static ScheduleFormFragment newInstance(int colorLabel, String value, long createdTime) {
+    public static ScheduleFormFragment newInstance(String value, long createdTime) {
         ScheduleFormFragment fragment = new ScheduleFormFragment();
         Bundle args = new Bundle();
-        args.putInt(ARGS_COLORLABEL, colorLabel);
+//        args.putInt(ARGS_COLORLABEL, colorLabel);
         args.putString(ARGS_VALUE, value);
         args.putLong(ARGS_CREATEDTIME, createdTime);
         fragment.setArguments(args);
@@ -79,6 +79,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_schedule_add, container, false);
+
 
 /*        //カラーラベルのインスタンスを取得
         rootView.findViewById(R.id.color_none).setOnClickListener((View.OnClickListener) this);
@@ -141,6 +142,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         return rootView;
 
     }
+
 
     // 日付入力
     //  時刻入力

@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity  {
         if (item == null) {
             fragment = ScheduleFormFragment.newInstance();
         } else {
-            fragment = ScheduleFormFragment.newInstance();
+            fragment = ScheduleFormFragment.newInstance(item.getValue(), item.getCreatedTime());
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
     }
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity  {
             if (item == null) {
                 fragment = BelongingsFormFragment.newInstance();
             } else {
-                fragment = BelongingsFormFragment.newInstance();
+                fragment = BelongingsFormFragment.newInstance(item.getValue(), item.getCreatedTime());
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
         }
