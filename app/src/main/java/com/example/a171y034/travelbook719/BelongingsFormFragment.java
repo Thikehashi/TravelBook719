@@ -155,8 +155,7 @@ public class BelongingsFormFragment extends Fragment /*implements View.OnClickLi
                 ft.commit();
 
             } else {
-                //Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
-                mEtInput.setError("文字を入力してください");
+                mEtInput.setError("持ち物を入力してください");
             }
 
             //ソフトウェアキーボードを閉じる
