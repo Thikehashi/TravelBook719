@@ -19,6 +19,8 @@ public class AddSchedule {
 
     private String endTime;
 
+    private String date;
+
     public static interface ColorLabel {
 
         public static final int NONE = 1;
@@ -28,12 +30,13 @@ public class AddSchedule {
         public static final int AMBER = 5;
     }
 
-    public AddSchedule( String startTime, String endTime, String value, long createdTime) {
+    public AddSchedule( String startTime, String endTime, String value, long createdTime, String date) {
  //       this.colorLabel = colorLabel;
         this.startTime = startTime;
         this.endTime = endTime;
         this.value = value;
         this.createdTime = createdTime;
+        this.date = date;
     }
 
  /*   public int getColorLabel() {
@@ -69,6 +72,9 @@ public class AddSchedule {
     public void setCreatedTime(long createdTime) {
         this.createdTime = createdTime;
     }
+
+    public String getDate(){return date;}
+    public void setDate(String date){this.date = value;}
 
     /**
      * スケジュールリストアイテムを作成.

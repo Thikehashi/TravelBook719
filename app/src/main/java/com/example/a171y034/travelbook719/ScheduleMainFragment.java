@@ -131,7 +131,8 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
             String endTime = intent.getStringExtra(ScheduleFormFragment.ARGS_ENDTIME);
             String value = intent.getStringExtra(ScheduleFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(ScheduleFormFragment.ARGS_CREATEDTIME, 0);
-            AddSchedule newItem = new AddSchedule(time, endTime, value, createdTime);
+            String date = intent.getStringExtra(ScheduleFormFragment.ARGS_DATE);
+            AddSchedule newItem = new AddSchedule(time, endTime, value, createdTime, date);
 
             //作成時間を既に存在するデータか確認
             int updateIndex = -1;

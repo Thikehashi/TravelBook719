@@ -122,5 +122,7 @@ public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
         TextView tvCreatedTime;
 
         TextView tvValue;
+
+
     }
 }
