@@ -86,7 +86,7 @@ public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
     /**
      * カテゴリアイコンdrawableリソースIDを返却.
      *
-     * @param  category : カラー
+     * @param  category : カテゴリアイコン
      */
     private int getCategoryIconResource(int category) {
         int resId = R.drawable.bg_colorlabel_grey;

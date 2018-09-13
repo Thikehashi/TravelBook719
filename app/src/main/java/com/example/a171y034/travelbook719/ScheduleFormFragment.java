@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.a171y034.travelbook719.R.id.editendTime;
@@ -30,11 +29,9 @@ import static com.example.a171y034.travelbook719.R.id.editstartTime;
  * Created by 171y034 on 2018/07/20.
  */
 
-public class ScheduleFormFragment extends Fragment /*implements View.OnClickListener*/ {
+public class ScheduleFormFragment extends Fragment implements View.OnClickListener {
 
     public static final String TAG = ScheduleFormFragment.class.getSimpleName();
-
-    private static final int MENU_ADD = 1;
 
     public static final String ARGS_CATEGORY = "key-category";
 
@@ -52,15 +49,12 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
     private long mCreatedTime = 0;
 
-    private TextView mTextView;
     private EditText mEtInput;
     private EditText mDateInput;
     private EditText mStartTime;
     private EditText mEndTime;
 
     private boolean mIsTextEdited = false;
-
-    private MenuItem mMenuAdd;
 
     public static ScheduleFormFragment newInstance() {
         return new ScheduleFormFragment();
@@ -93,7 +87,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
         View rootView = inflater.inflate(R.layout.fragment_schedule_add, container, false);
 
-/*        //カテゴリアイコンのインスタンスを取得
+        //カテゴリアイコンのインスタンスを取得
         rootView.findViewById(R.id.color_white).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.category_tourism).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.category_move).setOnClickListener((View.OnClickListener) this);
@@ -101,7 +95,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         rootView.findViewById(R.id.category_shopping).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.category_dormitory).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.category_experience).setOnClickListener((View.OnClickListener)this);
-*/
+
         //入力フォームのインスタンスを取得
         mEtInput = (EditText) rootView.findViewById(R.id.input);
         mEtInput.addTextChangedListener(new TextWatcher() {
@@ -182,8 +176,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         Bundle args = getArguments();
         if (args != null) {
             //カテゴリアイコンをセット
-//            mCategoryIcon = args.getInt(ARGS_CATEGORY, AddSchedule.Category.NONE);
-//            mEtInput.setBackgroundResource(getCategoryResource(mCategoryIcon));
+            mCategoryIcon = args.getInt(ARGS_CATEGORY, AddSchedule.Category.NONE);
 
             //値をセット
             String value = args.getString(ARGS_VALUE);
@@ -278,7 +271,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
             String date = mDateInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
-                //resultData.putExtra(ARGS_COLORLABEL, mColorLabel);
+                resultData.putExtra(ARGS_CATEGORY, mCategoryIcon);
                 resultData.putExtra(ARGS_TIME, time);
                 resultData.putExtra(ARGS_ENDTIME, endTime);
                 resultData.putExtra(ARGS_VALUE, value);
@@ -317,7 +310,7 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         }
         return super.onOptionsItemSelected(item);
     }
-/*
+
     @Override
     public void onClick(View v) {
         int viewId = v.getId();
@@ -325,36 +318,16 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
             mCategoryIcon = AddSchedule.Category.NONE;
         } else if (viewId == R.id.category_tourism) {
             mCategoryIcon = AddSchedule.Category.TOURISM;
-        } else if (viewId == R.id.cate) {
-            mCategoryIcon = AddSchedule.ColorLabel.PINK;
-        } else if (viewId == R.id.color_indigo) {
-            mCategoryIcon = AddSchedule.ColorLabel.INDIGO;
-        } else if (viewId == R.id.color_green) {
-            mCategoryIcon = AddSchedule.ColorLabel.GREEN;
+        } else if (viewId == R.id.category_move) {
+            mCategoryIcon = AddSchedule.Category.MOVE;
+        } else if (viewId == R.id.category_lunch) {
+            mCategoryIcon = AddSchedule.Category.LUNCH;
+        } else if (viewId == R.id.category_shopping) {
+            mCategoryIcon = AddSchedule.Category.SHOPPING;
+        } else if (viewId == R.id.category_dormitory){
+            mCategoryIcon = AddSchedule.Category.DORMITORY;
+        } else if (viewId == R.id.category_experience){
+            mCategoryIcon = AddSchedule.Category.EXPERIENCE;
         }
-        mEtInput.setBackgroundResource(getCategoryResource(mCategoryIcon));
     }
-
-    /**
-     * カテゴリアイコンに応じたdrawableリソースを返却.
-     *
-     * @param category : カラー
-     */
-/*
-    private int getCategoryResource(int category) {
-        int resId = AddSchedule.ColorLabel.NONE;
-        if (color == AddSchedule.ColorLabel.NONE) {
-            resId = getResources().getColor(R.color.material_grey_500);
-        } else if (color == AddSchedule.ColorLabel.AMBER) {
-            resId = getResources().getColor(R.color.material_amber_500);
-        } else if (color == AddSchedule.ColorLabel.PINK) {
-            resId = getResources().getColor(R.color.material_pink_500);
-        } else if (color == AddSchedule.ColorLabel.INDIGO) {
-            resId = getResources().getColor(R.color.material_indigo_500);
-        } else if (color == AddSchedule.ColorLabel.GREEN) {
-            resId = getResources().getColor(R.color.material_green_500);
-        }
-        return resId;
-    }
-    */
 }

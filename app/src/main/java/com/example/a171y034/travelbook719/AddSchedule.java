@@ -9,8 +9,6 @@ import java.util.List;
 
 public class AddSchedule {
 
-//    private int colorLabel;
-
     private long createdTime;
 
     private String value;
