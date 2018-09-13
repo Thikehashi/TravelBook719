@@ -31,51 +31,48 @@
             android:layout_height="@dimen/colorlabel_size" />
 
         <Button
-            android:background="@drawable/bg_colorlabel_amber"
-            android:layout_margin="@dimen/colorlabel_padding"
-            android:id="@+id/color_amber"
+            android:id="@+id/category_tourism"
             android:layout_width="@dimen/colorlabel_size"
-            android:layout_height="@dimen/colorlabel_size" />
+            android:layout_height="@dimen/colorlabel_size"
+            android:layout_margin="@dimen/colorlabel_padding"
+            android:background="@drawable/category_icon_tourism"/>
 
         <Button
-            android:background="@drawable/bg_colorlabel_pink"
-            android:id="@+id/color_pink"
+            android:background="@drawable/category_icon_move"
+            android:id="@+id/category_move"
             android:layout_margin="@dimen/colorlabel_padding"
-            android:layout_width="@dimen/colorlabel_size"
-            android:layout_height="@dimen/colorlabel_size" />
-
-
-        <Button
-            android:layout_margin="@dimen/colorlabel_padding"
-            android:background="@drawable/bg_colorlabel_indigo"
-            android:id="@+id/color_indigo"
             android:layout_width="@dimen/colorlabel_size"
             android:layout_height="@dimen/colorlabel_size" />
 
 
         <Button
-            android:id="@+id/color_green"
-            android:layout_width="@dimen/colorlabel_size"
-            android:layout_height="@dimen/colorlabel_size"
             android:layout_margin="@dimen/colorlabel_padding"
-            android:layout_weight="0.00"
-            android:background="@drawable/bg_colorlabel_green"/>
+            android:background="@drawable/category_icon_lunch"
+            android:id="@+id/category_lunch"
+            android:layout_width="@dimen/colorlabel_size"
+            android:layout_height="@dimen/colorlabel_size" />
+
 
         <Button
-            android:id="@+id/color_green"
-            android:layout_width="@dimen/colorlabel_size"
-            android:layout_height="@dimen/colorlabel_size"
             android:layout_margin="@dimen/colorlabel_padding"
-            android:layout_weight="0.00"
-            android:background="@drawable/bg_colorlabel_green"/>
+            android:background="@drawable/category_icon_shopping"
+            android:id="@+id/category_shopping"
+            android:layout_width="@dimen/colorlabel_size"
+            android:layout_height="@dimen/colorlabel_size" />
 
         <Button
-            android:id="@+id/color_green"
-            android:layout_width="@dimen/colorlabel_size"
-            android:layout_height="@dimen/colorlabel_size"
             android:layout_margin="@dimen/colorlabel_padding"
-            android:layout_weight="0.00"
-            android:background="@drawable/bg_colorlabel_green"/>
+            android:background="@drawable/category_icon_dormitory"
+            android:id="@+id/category_dormitory"
+            android:layout_width="@dimen/colorlabel_size"
+            android:layout_height="@dimen/colorlabel_size" />
+
+        <Button
+            android:layout_margin="@dimen/colorlabel_padding"
+            android:background="@drawable/category_icon_experience"
+            android:id="@+id/category_experience"
+            android:layout_width="@dimen/colorlabel_size"
+            android:layout_height="@dimen/colorlabel_size" />
 
 
     </LinearLayout>
@@ -143,7 +140,7 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.13"
+            android:layout_weight="0.15"
             android:text="なし"
             android:textAlignment="center"/>
 
@@ -159,7 +156,7 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.13"
+            android:layout_weight="0.17"
             android:text="移動"
             android:textAlignment="center"/>
 
@@ -167,7 +164,7 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.14"
+            android:layout_weight="0.15"
             android:text="食事"
             android:textAlignment="center"/>
 
@@ -175,7 +172,7 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.07"
+            android:layout_weight="0.12"
             android:text="買い物"
             android:textAlignment="center"/>
 
@@ -183,7 +180,7 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.12"
+            android:layout_weight="0.13"
             android:text="宿泊"
             android:textAlignment="center"/>
 
@@ -191,7 +188,7 @@
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.15"
+            android:layout_weight="0.18"
             android:text="体験"
             android:textAlignment="center"/>
     </LinearLayout>
