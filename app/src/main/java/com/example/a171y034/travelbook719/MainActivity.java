@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity  {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
+        // BottomNavigationBarでのページ選択、画面遷移
         bottomNavigationView.setOnNavigationItemSelectedListener
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity  {
 
     /*    /**
      * Scheduleフォーム画面を表示
-     *
+     *スケジュール画面
      * @param item Scheduleリストデータ
      */
     public void showScheduleForm(AddSchedule item) {
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity  {
 
         /*    /**
      * Memoフォーム画面を表示
-     *
+     *メモ画面
      * @param item Memoリストデータ
      */
         public void showMemoForm(AddMemo item) {
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity  {
 
         /*    /**
     * Belongingsフォーム画面を表示
-    *
+    *持ち物リスト画面
     * @param item Belongingsリストデータ
     */
         public void showBelongingsForm(AddBelongings item) {

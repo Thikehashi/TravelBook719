@@ -12,5 +12,6 @@
     <color name="material_grey_500">#9e9e9e</color>
     <color name="material_indigo_500">#3f51b5</color>
     <color name="material_pink_500">#e91e63</color>
+    <color name="material_white_500">#fff</color>
 
 </resources>
