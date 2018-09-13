@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity  {
         if (item == null) {
             fragment = ScheduleFormFragment.newInstance();
         } else {
-            fragment = ScheduleFormFragment.newInstance(item.getStartTime(), item.getEndTime(), item.getDate(), item.getValue(), item.getCreatedTime());
+            fragment = ScheduleFormFragment.newInstance(item.getCategory(), item.getStartTime(), item.getEndTime(), item.getDate(), item.getValue(), item.getCreatedTime());
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
     }

@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.a171y034.travelbook719.R.id.editendTime;
@@ -35,6 +36,8 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
     private static final int MENU_ADD = 1;
 
+    public static final String ARGS_CATEGORY = "key-category";
+
     public static final String ARGS_TIME = "key-time";
 
     public static final String ARGS_ENDTIME = "key-endtime";
@@ -45,10 +48,11 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
     public static final String ARGS_CREATEDTIME = "key-createdtime";
 
-    private int mColorLabel = AddSchedule.ColorLabel.NONE;
+    private int mCategoryIcon = AddSchedule.Category.NONE;
 
     private long mCreatedTime = 0;
 
+    private TextView mTextView;
     private EditText mEtInput;
     private EditText mDateInput;
     private EditText mStartTime;
@@ -62,10 +66,10 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         return new ScheduleFormFragment();
     }
 
-    public static ScheduleFormFragment newInstance(String time, String endTime, String date, String value, long createdTime) {
+    public static ScheduleFormFragment newInstance(int category, String time, String endTime, String date, String value, long createdTime) {
         ScheduleFormFragment fragment = new ScheduleFormFragment();
         Bundle args = new Bundle();
-//        args.putInt(ARGS_COLORLABEL, colorLabel);
+        args.putInt(ARGS_CATEGORY, category);
         args.putString(ARGS_TIME, time);
         args.putString(ARGS_ENDTIME, endTime);
         args.putString(ARGS_DATE, date);
@@ -89,13 +93,14 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
 
         View rootView = inflater.inflate(R.layout.fragment_schedule_add, container, false);
 
-
-/*        //カラーラベルのインスタンスを取得
-        rootView.findViewById(R.id.color_none).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_amber).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_green).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_indigo).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_pink).setOnClickListener((View.OnClickListener) this);
+/*        //カテゴリアイコンのインスタンスを取得
+        rootView.findViewById(R.id.color_white).setOnClickListener((View.OnClickListener) this);
+        rootView.findViewById(R.id.category_tourism).setOnClickListener((View.OnClickListener) this);
+        rootView.findViewById(R.id.category_move).setOnClickListener((View.OnClickListener) this);
+        rootView.findViewById(R.id.category_lunch).setOnClickListener((View.OnClickListener) this);
+        rootView.findViewById(R.id.category_shopping).setOnClickListener((View.OnClickListener) this);
+        rootView.findViewById(R.id.category_dormitory).setOnClickListener((View.OnClickListener) this);
+        rootView.findViewById(R.id.category_experience).setOnClickListener((View.OnClickListener)this);
 */
         //入力フォームのインスタンスを取得
         mEtInput = (EditText) rootView.findViewById(R.id.input);
@@ -176,10 +181,10 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         //編集データを受け取っていたらセット
         Bundle args = getArguments();
         if (args != null) {
-/*            //カラーラベルをセット
-            mColorLabel = args.getInt(ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
-            mEtInput.setTextColor(getColorResource(mColorLabel));
-*/
+            //カテゴリアイコンをセット
+//            mCategoryIcon = args.getInt(ARGS_CATEGORY, AddSchedule.Category.NONE);
+//            mEtInput.setBackgroundResource(getCategoryResource(mCategoryIcon));
+
             //値をセット
             String value = args.getString(ARGS_VALUE);
             mEtInput.setText(value);
@@ -312,31 +317,31 @@ public class ScheduleFormFragment extends Fragment /*implements View.OnClickList
         }
         return super.onOptionsItemSelected(item);
     }
-
-/*    @Override
+/*
+    @Override
     public void onClick(View v) {
         int viewId = v.getId();
-        if (viewId == R.id.color_none) {
-            mColorLabel = AddSchedule.ColorLabel.NONE;
-        } else if (viewId == R.id.color_amber) {
-            mColorLabel = AddSchedule.ColorLabel.AMBER;
-        } else if (viewId == R.id.color_pink) {
-            mColorLabel = AddSchedule.ColorLabel.PINK;
+        if (viewId == R.id.color_white) {
+            mCategoryIcon = AddSchedule.Category.NONE;
+        } else if (viewId == R.id.category_tourism) {
+            mCategoryIcon = AddSchedule.Category.TOURISM;
+        } else if (viewId == R.id.cate) {
+            mCategoryIcon = AddSchedule.ColorLabel.PINK;
         } else if (viewId == R.id.color_indigo) {
-            mColorLabel = AddSchedule.ColorLabel.INDIGO;
+            mCategoryIcon = AddSchedule.ColorLabel.INDIGO;
         } else if (viewId == R.id.color_green) {
-            mColorLabel = AddSchedule.ColorLabel.GREEN;
+            mCategoryIcon = AddSchedule.ColorLabel.GREEN;
         }
-        mEtInput.setTextColor(getColorResource(mColorLabel));
+        mEtInput.setBackgroundResource(getCategoryResource(mCategoryIcon));
     }
 
     /**
-     * カラーラベルに応じたカラーリソースを返却.
+     * カテゴリアイコンに応じたdrawableリソースを返却.
      *
-     * @param color : カラー
+     * @param category : カラー
      */
 /*
-    private int getColorResource(int color) {
+    private int getCategoryResource(int category) {
         int resId = AddSchedule.ColorLabel.NONE;
         if (color == AddSchedule.ColorLabel.NONE) {
             resId = getResources().getColor(R.color.material_grey_500);

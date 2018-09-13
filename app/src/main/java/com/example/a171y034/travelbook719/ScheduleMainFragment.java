@@ -126,13 +126,13 @@ public class ScheduleMainFragment extends Fragment implements AdapterView.OnItem
         @Override
         public void onReceive(Context context, Intent intent) {
             //スケジュールデータを作成
-//            int color = intent.getIntExtra(ScheduleFormFragment.ARGS_COLORLABEL, AddSchedule.ColorLabel.NONE);
+            int category = intent.getIntExtra(ScheduleFormFragment.ARGS_CATEGORY, AddSchedule.Category.TOURISM);
             String time = intent.getStringExtra(ScheduleFormFragment.ARGS_TIME);
             String endTime = intent.getStringExtra(ScheduleFormFragment.ARGS_ENDTIME);
             String value = intent.getStringExtra(ScheduleFormFragment.ARGS_VALUE);
             long createdTime = intent.getLongExtra(ScheduleFormFragment.ARGS_CREATEDTIME, 0);
             String date = intent.getStringExtra(ScheduleFormFragment.ARGS_DATE);
-            AddSchedule newItem = new AddSchedule(time, endTime, value, createdTime, date);
+            AddSchedule newItem = new AddSchedule(category, time, endTime, value, createdTime, date);
 
             //作成時間を既に存在するデータか確認
             int updateIndex = -1;

@@ -33,7 +33,7 @@ public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
         if (convertView == null) {
             convertView = mInflator.inflate(R.layout.item_list_schedule_row, parent, false);
             holder = new ViewHolder();
-//            holder.tvColorLabel = (TextView) convertView.findViewById(R.id.color_label);
+            holder.tvCategoryIcon = (TextView) convertView.findViewById(R.id.category_icon);
             holder.tvTime = (TextView) convertView.findViewById(R.id.StartTime);
             holder.tvEndTime = (TextView) convertView.findViewById(R.id.EndTime);
             holder.tvValue = (TextView) convertView.findViewById(R.id.value);
@@ -61,13 +61,10 @@ public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
             holder.tvValue.setText(value);
         }
 
-/*        //カラーラベルをセット
-        int color = getItem(position).getColorLabel();
-        holder.tvColorLabel.setBackgroundResource(getColorLabelResource(color));
-        if (!TextUtils.isEmpty(value)) {
-            holder.tvColorLabel.setText(value.substring(0, 1));
-        }
-*/
+        //カラーラベルをセット
+        int category = getItem(position).getCategory();
+        holder.tvCategoryIcon.setBackgroundResource(getCategoryIconResource(category));
+
 
         //日付をセット
         String createdtime = getCreatedTime(getItem(position).getCreatedTime());
@@ -87,33 +84,41 @@ public class ScheduleListAdapter extends ArrayAdapter<AddSchedule> {
     }
 
     /**
-     * カラーラベルのdrawableリソースIDを返却.
+     * カテゴリアイコンdrawableリソースIDを返却.
      *
-     * @param //color : カラー
+     * @param  category : カラー
      */
-/*    private int getColorLabelResource(int color) {
+    private int getCategoryIconResource(int category) {
         int resId = R.drawable.bg_colorlabel_grey;
-        switch (color) {
-            case AddSchedule.ColorLabel.PINK:
-                resId = R.drawable.bg_colorlabel_pink;
+        switch (category) {
+            case AddSchedule.Category.NONE:
+                resId = R.drawable.bg_colorlabel_white;
                 break;
-            case AddSchedule.ColorLabel.INDIGO:
-                resId = R.drawable.bg_colorlabel_indigo;
+            case AddSchedule.Category.TOURISM:
+                resId = R.drawable.category_icon_tourism;
                 break;
-            case AddSchedule.ColorLabel.GREEN:
-                resId = R.drawable.bg_colorlabel_green;
+            case AddSchedule.Category.MOVE:
+                resId = R.drawable.category_icon_move;
                 break;
-            case AddSchedule.ColorLabel.AMBER:
-                resId = R.drawable.bg_colorlabel_amber;
+            case AddSchedule.Category.LUNCH:
+                resId = R.drawable.category_icon_lunch;
+                break;
+            case AddSchedule.Category.SHOPPING:
+                resId = R.drawable.category_icon_shopping;
+                break;
+            case AddSchedule.Category.DORMITORY:
+                resId = R.drawable.category_icon_dormitory;
+                break;
+            case AddSchedule.Category.EXPERIENCE:
+                resId  = R.drawable.category_icon_experience;
                 break;
         }
         return resId;
     }
-*/
 
     private class ViewHolder {
 
-        TextView tvColorLabel;
+        TextView tvCategoryIcon;
 
         TextView tvTime;
 

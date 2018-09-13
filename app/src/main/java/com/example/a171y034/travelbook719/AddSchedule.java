@@ -21,17 +21,21 @@ public class AddSchedule {
 
     private String date;
 
-    public static interface ColorLabel {
+    private int category;
+
+    public static interface Category {
 
         public static final int NONE = 1;
-        public static final int PINK = 2;
-        public static final int INDIGO = 3;
-        public static final int GREEN = 4;
-        public static final int AMBER = 5;
+        public static final int TOURISM = 2;
+        public static final int MOVE = 3;
+        public static final int LUNCH = 4;
+        public static final int SHOPPING = 5;
+        public static final int DORMITORY = 6;
+        public static final int EXPERIENCE = 7;
     }
 
-    public AddSchedule( String startTime, String endTime, String value, long createdTime, String date) {
- //       this.colorLabel = colorLabel;
+    public AddSchedule(int category, String startTime, String endTime, String value, long createdTime, String date) {
+        this.category = category;
         this.startTime = startTime;
         this.endTime = endTime;
         this.value = value;
@@ -39,15 +43,9 @@ public class AddSchedule {
         this.date = date;
     }
 
- /*   public int getColorLabel() {
-        return colorLabel;
-    }
-*/
+   public int getCategory() { return category; }
 
-/*    public void setColorLabel(int colorLabel) {
-        this.colorLabel = colorLabel;
-    }
-*/
+    public void setCategory(int category) { this.category = category; }
 
     public String getStartTime(){ return startTime; }
 
