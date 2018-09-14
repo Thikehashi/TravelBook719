@@ -7,4 +7,5 @@
     <string name="title_setting">アプリ設定</string>
     <string name="title_schedule_add">スケジュール追加</string>
     <string name="title_list_add">持ち物追加</string>
+    <string name="image_index">%1$s/%2$s</string>
 </resources>
