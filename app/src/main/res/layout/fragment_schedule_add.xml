@@ -28,14 +28,15 @@
             android:checked="true"
             android:layout_margin="@dimen/colorlabel_padding"
             android:layout_width="@dimen/colorlabel_size"
-            android:layout_height="@dimen/colorlabel_size" />
+            android:layout_height="@dimen/colorlabel_size"/>
 
         <Button
             android:id="@+id/category_tourism"
             android:layout_width="@dimen/colorlabel_size"
             android:layout_height="@dimen/colorlabel_size"
             android:layout_margin="@dimen/colorlabel_padding"
-            android:background="@drawable/category_icon_tourism"/>
+            android:foreground="@drawable/category_icon_tourism"
+            android:background="@drawable/button_color"/>
 
         <Button
             android:background="@drawable/category_icon_move"
