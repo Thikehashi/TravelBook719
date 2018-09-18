@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'bugly'
 
 android {
     compileSdkVersion 27
@@ -11,6 +12,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        ndk{
+            // サポートされているSOライブラリアーキテクチャをセットアップ
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
     buildTypes {
         release {
@@ -20,8 +25,14 @@ android {
     }
 }
 
+repositories{
+    flatDir{
+        dirs 'libs' // libフォルダ内の.aarファイルをみつける
+    }
+}
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -29,5 +40,10 @@ dependencies {
     compile 'com.android.support:design:27.+'
     compile 'com.android.support:support-vector-drawable:27.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile files('libs/universal-image-loader-1.9.5.jar')
+//    compile project(':Android-Universal-Image-Loader:android-universal-image-loader')
+//    compile(name: 'photoview-release-1.2.4', ext: 'aar')
+//    compile 'com.github.D-clock:AndroidUtils@aar'
     testCompile 'junit:junit:4.12'
 }

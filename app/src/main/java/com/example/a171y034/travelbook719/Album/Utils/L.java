@@ -17,8 +17,6 @@ package com.example.a171y034.travelbook719.Album.Utils;
 
 import android.util.Log;
 
-import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoader;
-
 /**
  * "Less-word" analog of Android {@link android.util.Log logger}
  *

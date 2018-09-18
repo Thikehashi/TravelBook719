@@ -14,6 +14,7 @@
     <!--アルバム機能で使用-->
     <string name="image_index">%1$s/%2$s</string>
     <string name="all_image">すべての画像</string>
+    <string name="selected_image">選択された画像</string>
     <string name="grant_permission_success">認証成功</string>
     <string name="grant_permission_failure">認証失敗。アルバムを読めません</string>
     <string name="grant_advice_read_album">アルバムへのアクセス許可</string>
