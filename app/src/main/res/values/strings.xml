@@ -1,5 +1,8 @@
 <resources>
+    <!--タイトル-->
     <string name="app_name">TravelBook</string>
+
+    <!--ページタイトル-->
     <string name="title_schedule">スケジュール</string>
     <string name="title_list">持ち物リスト</string>
     <string name="title_photo">スクラップ</string>
@@ -7,5 +10,17 @@
     <string name="title_setting">アプリ設定</string>
     <string name="title_schedule_add">スケジュール追加</string>
     <string name="title_list_add">持ち物追加</string>
+
+    <!--アルバム機能で使用-->
     <string name="image_index">%1$s/%2$s</string>
+    <string name="all_image">すべての画像</string>
+    <string name="grant_permission_success">認証成功</string>
+    <string name="grant_permission_failure">認証失敗。アルバムを読めません</string>
+    <string name="grant_advice_read_album">アルバムへのアクセス許可</string>
+    <string name="help">システム許可</string>
+    <string name="help_content">アルバムを読む権限がありません。「設定」-「権限」をクリックして、
+                                    アプリケーションの権限を付与してください。</string>
+    <string name="quit">キャンセル</string>
+    <string name="settings">設定</string>
+    <string name="selected_ok">決定 (%1$s/%2$s)</string>
 </resources>

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.a171y034.travelbook719.Album.UI.PhotoMainFragment;
 import com.example.a171y034.travelbook719.Belongings.Add.AddBelongings;
 import com.example.a171y034.travelbook719.Belongings.Fragment.BelongingsFormFragment;
 import com.example.a171y034.travelbook719.Belongings.Fragment.BelongingsMainFragment;
