@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Schedule.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.a171y034.travelbook719.Schedule.PickerDialog.DatePickerDialogFragment;
+import com.example.a171y034.travelbook719.R;
+import com.example.a171y034.travelbook719.Schedule.Add.AddSchedule;
+import com.example.a171y034.travelbook719.Schedule.PickerDialog.TimePickerDialogFragment;
+import com.example.a171y034.travelbook719.Schedule.PickerDialog.TimePickerDialogFragment2;
 
 import static com.example.a171y034.travelbook719.R.id.editendTime;
 import static com.example.a171y034.travelbook719.R.id.editstartTime;

@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Belongings.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,15 +21,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.a171y034.travelbook719.Belongings.Add.AddBelongings;
+import com.example.a171y034.travelbook719.R;
+
 /**
  * Created by 171y034 on 2018/07/24.
  */
+public class BelongingsFormFragment extends Fragment {
 
-public class MemoFormFragment extends Fragment implements View.OnClickListener {
-
-    public static final String TAG = MemoFormFragment.class.getSimpleName();
-
-    private static final int MENU_ADD = 1;
+    public static final String TAG = BelongingsFormFragment.class.getSimpleName();
 
     public static final String ARGS_COLORLABEL = "key-colorlabel";
 
@@ -37,7 +37,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
 
     public static final String ARGS_CREATEDTIME = "key-createdtime";
 
-    private int mColorLabel = AddMemo.ColorLabel.NONE;
+    private int mColorLabel = AddBelongings.ColorLabel.NONE;
 
     private long mCreatedTime = 0;
 
@@ -45,16 +45,13 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
 
     private boolean mIsTextEdited = false;
 
-    private MenuItem mMenuAdd;
-
-    public static MemoFormFragment newInstance() {
-        return new MemoFormFragment();
+    public static BelongingsFormFragment newInstance() {
+        return new BelongingsFormFragment();
     }
 
-    public static MemoFormFragment newInstance(int colorLabel, String value, long createdTime) {
-        MemoFormFragment fragment = new MemoFormFragment();
+    public static BelongingsFormFragment newInstance(String value, long createdTime) {
+        BelongingsFormFragment fragment = new BelongingsFormFragment();
         Bundle args = new Bundle();
-        args.putInt(ARGS_COLORLABEL, colorLabel);
         args.putString(ARGS_VALUE, value);
         args.putLong(ARGS_CREATEDTIME, createdTime);
         fragment.setArguments(args);
@@ -73,14 +70,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_memo_add, container, false);
-
-        //カラーラベルのインスタンスを取得
-        rootView.findViewById(R.id.color_none).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_amber).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_green).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_indigo).setOnClickListener((View.OnClickListener) this);
-        rootView.findViewById(R.id.color_pink).setOnClickListener((View.OnClickListener) this);
+        View rootView = inflater.inflate(R.layout.fragment_belongings_add, container, false);
 
         //入力フォームのインスタンスを取得
         mEtInput = (EditText) rootView.findViewById(R.id.input);
@@ -103,9 +93,6 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
         //編集データを受け取っていたらセット
         Bundle args = getArguments();
         if (args != null) {
-            //カラーラベルをセット
-            mColorLabel = args.getInt(ARGS_COLORLABEL, AddMemo.ColorLabel.NONE);
-            mEtInput.setTextColor(getColorResource(mColorLabel));
 
             //値をセット
             String value = args.getString(ARGS_VALUE);
@@ -117,18 +104,13 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
         return rootView;
     }
 
-    // チェックボタンを表示させる
+    // チェックボタン(追加ボタン)を表示させる
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         MenuItem menuItem = menu.findItem(R.id.actionok);
         if (menuItem == null) {
             inflater.inflate(R.menu.menu_sub, menu);
             menu.findItem(R.id.actionok).setVisible(true);
-/*            mMenuAdd = menu.add(Menu.NONE, MENU_ADD, Menu.NONE, "ADD");
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                mMenuAdd.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-            }
-*/
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -137,7 +119,7 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.actionok) {
-            //Memoリストを追加
+            //持ち物リストを追加
             String value = mEtInput.getText().toString();
             if (!TextUtils.isEmpty(value) && mIsTextEdited) {
                 Intent resultData = new Intent();
@@ -152,19 +134,18 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
                     resultData.putExtra(ARGS_CREATEDTIME, mCreatedTime);
                 }
                 //Broadcastを送信
-                resultData.setAction(MemoMainFragment.ACTION_CREATE_MEMO);
+                resultData.setAction(BelongingsMainFragment.ACTION_CREATE_BELONGINGS);
                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(resultData);
 
                 // ひとつ前のFragmentに戻る
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                MemoMainFragment fragment = new MemoMainFragment();
+                BelongingsMainFragment fragment = new BelongingsMainFragment();
                 ft.replace(R.id.content, fragment);
                 ft.commit();
 
             } else {
-                //Toast.makeText(getActivity(), "入力してください", Toast.LENGTH_SHORT).show();
-                mEtInput.setError("文字を入力してください");
+                mEtInput.setError("持ち物を入力してください");
             }
 
             //ソフトウェアキーボードを閉じる
@@ -175,43 +156,5 @@ public class MemoFormFragment extends Fragment implements View.OnClickListener {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View v) {
-        int viewId = v.getId();
-        if (viewId == R.id.color_none) {
-            mColorLabel = AddMemo.ColorLabel.NONE;
-        } else if (viewId == R.id.color_amber) {
-            mColorLabel = AddMemo.ColorLabel.AMBER;
-        } else if (viewId == R.id.color_pink) {
-            mColorLabel = AddMemo.ColorLabel.PINK;
-        } else if (viewId == R.id.color_indigo) {
-            mColorLabel = AddMemo.ColorLabel.INDIGO;
-        } else if (viewId == R.id.color_green) {
-            mColorLabel = AddMemo.ColorLabel.GREEN;
-        }
-        mEtInput.setTextColor(getColorResource(mColorLabel));
-    }
-
-    /**
-     * カラーラベルに応じたカラーリソースを返却.
-     *
-     * @param color : カラー
-     */
-    private int getColorResource(int color) {
-        int resId = AddMemo.ColorLabel.NONE;
-        if (color == AddMemo.ColorLabel.NONE) {
-            resId = getResources().getColor(R.color.material_grey_500);
-        } else if (color == AddMemo.ColorLabel.AMBER) {
-            resId = getResources().getColor(R.color.material_amber_500);
-        } else if (color == AddMemo.ColorLabel.PINK) {
-            resId = getResources().getColor(R.color.material_pink_500);
-        } else if (color == AddMemo.ColorLabel.INDIGO) {
-            resId = getResources().getColor(R.color.material_indigo_500);
-        } else if (color == AddMemo.ColorLabel.GREEN) {
-            resId = getResources().getColor(R.color.material_green_500);
-        }
-        return resId;
     }
 }

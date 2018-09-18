@@ -10,6 +10,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.a171y034.travelbook719.Belongings.Add.AddBelongings;
+import com.example.a171y034.travelbook719.Belongings.Fragment.BelongingsFormFragment;
+import com.example.a171y034.travelbook719.Belongings.Fragment.BelongingsMainFragment;
+import com.example.a171y034.travelbook719.Memo.Add.AddMemo;
+import com.example.a171y034.travelbook719.Memo.Fragment.MemoFormFragment;
+import com.example.a171y034.travelbook719.Memo.Fragment.MemoMainFragment;
+import com.example.a171y034.travelbook719.Schedule.Add.AddSchedule;
+import com.example.a171y034.travelbook719.Schedule.Fragment.ScheduleFormFragment;
+import com.example.a171y034.travelbook719.Schedule.Fragment.ScheduleMainFragment;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {

@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Belongings.CheckBox;
 
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
@@ -16,6 +16,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Checkable;
+
+import com.example.a171y034.travelbook719.R;
 
 /**
  * Created by 171y034 on 2018/07/27.

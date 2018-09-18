@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Belongings.Fragment;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,26 +18,31 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.a171y034.travelbook719.Belongings.Adapter.BelongingsListAdapter;
+import com.example.a171y034.travelbook719.Belongings.Add.AddBelongings;
+import com.example.a171y034.travelbook719.MainActivity;
+import com.example.a171y034.travelbook719.R;
+
 import java.util.List;
 
 /**
  * Created by 171y034 on 2018/07/19.
  */
 
-public class MemoMainFragment  extends Fragment implements AdapterView.OnItemClickListener {
+public class BelongingsMainFragment  extends Fragment implements AdapterView.OnItemClickListener {
 
-    public static final String TAG = MemoMainFragment.class.getSimpleName();
+    public static final String TAG = BelongingsMainFragment.class.getSimpleName();
 
-    public static final String ACTION_CREATE_MEMO = "action-create_memo";
+    public static final String ACTION_CREATE_BELONGINGS = "action-create_belongings";
 
     private static final int MENU_ID_DELETE = 1;
 
-    private MemoListAdapter mAdapter;
+    private BelongingsListAdapter mAdapter;
 
-    private List<AddMemo> mAddList;
+    private List<AddBelongings> mAddList;
 
-    public static MemoMainFragment newInstance() {
-        MemoMainFragment fragment = new MemoMainFragment();
+    public static BelongingsMainFragment newInstance() {
+        BelongingsMainFragment fragment = new BelongingsMainFragment();
         return fragment;
     }
 
@@ -46,11 +51,11 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_memo_main, container, false);
+        View v = inflater.inflate(R.layout.fragment_belongings_main, container, false);
 
         //データを作成してAdapterにセット
-        mAddList = ((MainActivity) getActivity()).getAddListMemo();
-        mAdapter = new MemoListAdapter(getActivity(), mAddList);
+        mAddList = ((MainActivity) getActivity()).getAddListBelongings();
+        mAdapter = new BelongingsListAdapter(getActivity(), mAddList);
 
         //ListViewを初期化
         ListView listView = (ListView) v.findViewById(R.id.list);
@@ -66,13 +71,12 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
             @Override
             public void onClick(View view) {
                 //Memoリストを追加
-                ((MainActivity) getActivity()).showMemoForm(null);
+                ((MainActivity) getActivity()).showBelongingsForm(null);
             }
         });
-
         //BroadcastReceiverを登録
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
-                mAddTodoReceiver, new IntentFilter(ACTION_CREATE_MEMO));
+                mAddTodoReceiver, new IntentFilter(ACTION_CREATE_BELONGINGS));
         return v;
     }
 
@@ -86,7 +90,7 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //クリックしたアイテムを表示
-        ((MainActivity) getActivity()).showMemoForm(mAdapter.getItem(position));
+        ((MainActivity) getActivity()).showBelongingsForm(mAdapter.getItem(position));
     }
 
     @Override
@@ -122,16 +126,15 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
     BroadcastReceiver mAddTodoReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //Memoデータを作成
-            int color = intent.getIntExtra(MemoFormFragment.ARGS_COLORLABEL, AddMemo.ColorLabel.NONE);
-            String value = intent.getStringExtra(MemoFormFragment.ARGS_VALUE);
-            long createdTime = intent.getLongExtra(MemoFormFragment.ARGS_CREATEDTIME, 0);
-            AddMemo newItem = new AddMemo(color, value, createdTime);
+            //Belongingsデータを作成
+            String value = intent.getStringExtra(BelongingsFormFragment.ARGS_VALUE);
+            long createdTime = intent.getLongExtra(BelongingsFormFragment.ARGS_CREATEDTIME, 0);
+            AddBelongings newItem = new AddBelongings(value, createdTime);
 
             //作成時間を既に存在するデータか確認
             int updateIndex = -1;
             for (int i = 0; i < mAdapter.getCount(); i++) {
-                AddMemo item = mAdapter.getItem(i);
+                AddBelongings item = mAdapter.getItem(i);
                 if (item.getCreatedTime() == newItem.getCreatedTime()) {
                     updateIndex = i;
                 }

@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Schedule.PickerDialog;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
 import android.widget.EditText;
+
+import com.example.a171y034.travelbook719.R;
 
 import java.util.Locale;
 

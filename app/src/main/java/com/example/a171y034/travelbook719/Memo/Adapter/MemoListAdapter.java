@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Memo.Adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.example.a171y034.travelbook719.Memo.Add.AddMemo;
+import com.example.a171y034.travelbook719.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

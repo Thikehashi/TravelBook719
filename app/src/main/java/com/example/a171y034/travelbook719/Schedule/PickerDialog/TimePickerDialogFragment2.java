@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Schedule.PickerDialog;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -11,13 +11,15 @@ import android.support.v4.app.DialogFragment;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.example.a171y034.travelbook719.R;
+
 import java.util.Locale;
 
 /**
  * Created by 171y034 on 2018/07/30.
  */
 
-public class TimePickerDialogFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+public class TimePickerDialogFragment2 extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
@@ -34,9 +36,9 @@ public class TimePickerDialogFragment extends DialogFragment implements TimePick
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute){
         // 時刻が選択された時の処理
-        EditText editStart = (EditText) getActivity().findViewById(R.id.editstartTime);
+        EditText editEnd = (EditText) getActivity().findViewById(R.id.editendTime);
         String str = String.format(Locale.JAPAN, "%d時%d分", hourOfDay, minute);
-        editStart.setText( str );
+        editEnd.setText( str );
     }
 
 }

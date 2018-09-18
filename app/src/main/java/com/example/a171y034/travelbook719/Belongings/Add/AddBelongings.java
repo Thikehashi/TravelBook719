@@ -1,15 +1,13 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Belongings.Add;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by 171y034 on 2018/07/19.
+ * Created by 171y034 on 2018/07/26.
  */
 
-public class AddMemo {
-
-    private int colorLabel;
+public class AddBelongings{
 
     private long createdTime;
 
@@ -24,18 +22,9 @@ public class AddMemo {
         public static final int AMBER = 5;
     }
 
-    public AddMemo(int colorLabel, String value, long createdTime) {
-        this.colorLabel = colorLabel;
+    public AddBelongings(String value, long createdTime) {
         this.value = value;
         this.createdTime = createdTime;
-    }
-
-    public int getColorLabel() {
-        return colorLabel;
-    }
-
-    public void setColorLabel(int colorLabel) {
-        this.colorLabel = colorLabel;
     }
 
     public String getValue() {
@@ -57,8 +46,9 @@ public class AddMemo {
     /**
      * 表示リストアイテムを作成.
      */
-    public static List<AddMemo> Item() {
-        List<AddMemo> items = new ArrayList<>();
+    public static List<AddBelongings> Item() {
+        List<AddBelongings> items = new ArrayList<>();
         return items;
     }
+
 }

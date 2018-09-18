@@ -8,7 +8,7 @@
                 android:gravity="center"
                 tools:context=".MainActivity">
 
-    <com.example.a171y034.travelbook719.SmoothCheckBox
+    <com.example.a171y034.travelbook719.Belongings.CheckBox.SmoothCheckBox
         android:id="@+id/scb"
         android:layout_width="35dp"
         android:layout_height="35dp"

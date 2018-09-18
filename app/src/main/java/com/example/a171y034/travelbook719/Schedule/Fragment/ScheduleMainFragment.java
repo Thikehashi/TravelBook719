@@ -1,4 +1,4 @@
-package com.example.a171y034.travelbook719;
+package com.example.a171y034.travelbook719.Schedule.Fragment;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,6 +17,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.example.a171y034.travelbook719.MainActivity;
+import com.example.a171y034.travelbook719.R;
+import com.example.a171y034.travelbook719.Schedule.Adapter.ScheduleListAdapter;
+import com.example.a171y034.travelbook719.Schedule.Add.AddSchedule;
 
 import java.util.List;
 
