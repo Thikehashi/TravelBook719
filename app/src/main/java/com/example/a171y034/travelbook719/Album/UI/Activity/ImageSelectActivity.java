@@ -8,11 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.clock.album.R;
-import com.clock.album.imageloader.ImageLoaderFactory;
-import com.clock.album.imageloader.ImageLoaderWrapper;
-import com.clock.album.ui.activity.base.BaseActivity;
 import com.clock.utils.common.RuleUtils;
+import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderFactory;
+import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderWrapper;
+import com.example.a171y034.travelbook719.Album.UI.Activity.base.BaseActivity;
+import com.example.a171y034.travelbook719.R;
 
 import java.io.File;
 import java.util.List;

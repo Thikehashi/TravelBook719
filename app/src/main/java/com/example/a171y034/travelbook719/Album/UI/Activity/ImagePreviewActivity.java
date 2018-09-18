@@ -14,11 +14,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.clock.album.R;
-import com.clock.album.entity.ImageInfo;
-import com.clock.album.imageloader.ImageLoaderFactory;
-import com.clock.album.imageloader.ImageLoaderWrapper;
-import com.clock.album.ui.activity.base.BaseActivity;
+import com.example.a171y034.travelbook719.Album.Entity.ImageInfo;
+import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderFactory;
+import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderWrapper;
+import com.example.a171y034.travelbook719.Album.UI.Activity.base.BaseActivity;
+import com.example.a171y034.travelbook719.R;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -62,7 +63,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_preview);
+        setContentView(R.layout.photo_image_preview);
 
         if (Build.VERSION.SDK_INT >= 11) {
             getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
