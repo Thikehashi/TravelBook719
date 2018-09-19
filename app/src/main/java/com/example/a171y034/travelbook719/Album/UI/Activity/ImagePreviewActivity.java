@@ -63,7 +63,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.photo_image_preview);
+        setContentView(R.layout.activity_image_preview);
 
         if (Build.VERSION.SDK_INT >= 11) {
             getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {

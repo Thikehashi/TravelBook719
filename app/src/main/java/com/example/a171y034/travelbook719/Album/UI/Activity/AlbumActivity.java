@@ -94,7 +94,6 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         } else {
             mImageScannerPresenter.startScanImage(getApplicationContext(), getSupportLoaderManager());
         }
-
     }
 
     /**

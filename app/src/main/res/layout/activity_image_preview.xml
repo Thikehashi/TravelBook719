@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <com.clock.album.ui.widget.HackyViewPager
+    <com.example.a171y034.travelbook719.Album.UI.Widget.HackyViewPager
         android:id="@+id/gallery_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -53,9 +52,8 @@
             android:layout_marginRight="5dp"
             android:button="@drawable/image_selector"
             android:paddingLeft="4dp"
-            android:text="選択"
+            android:text="@string/selected"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </RelativeLayout>
-
 </RelativeLayout>
