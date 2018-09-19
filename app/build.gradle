@@ -42,8 +42,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile files('libs/universal-image-loader-1.9.5.jar')
-//    compile project(':Android-Universal-Image-Loader:android-universal-image-loader')
-//    compile(name: 'photoview-release-1.2.4', ext: 'aar')
-//    compile 'com.github.D-clock:AndroidUtils@aar'
+    compile(name: 'photoview-release-1.2.4', ext: 'aar')
+    compile(name: 'AndroidUtils', ext: 'aar')
     testCompile 'junit:junit:4.12'
 }
