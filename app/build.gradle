@@ -46,3 +46,8 @@ dependencies {
     compile(name: 'AndroidUtils', ext: 'aar')
     testCompile 'junit:junit:4.12'
 }
+
+bugly {
+    appId = "900019014"
+    appKey = "2XQMAyk12EBhkUUa"
+}

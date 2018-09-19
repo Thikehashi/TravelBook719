@@ -269,5 +269,4 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
             refreshSelectedViewState();
         }
     }
-
 }

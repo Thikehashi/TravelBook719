@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.a171y034.travelbook719.Album.UI.Activity.AlbumActivity;
 import com.example.a171y034.travelbook719.MainActivity;
 import com.example.a171y034.travelbook719.R;
 
@@ -15,6 +16,10 @@ import com.example.a171y034.travelbook719.R;
  */
 
 public class PhotoMainFragment extends Fragment  {
+
+    public static final String TAG = AlbumActivity.class.getSimpleName();
+
+    private MainActivity parent;
 
     public static PhotoMainFragment newInstance(){
         PhotoMainFragment fragment = new PhotoMainFragment();
@@ -35,15 +40,12 @@ public class PhotoMainFragment extends Fragment  {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //Intent albumIntent = new Intent(String.valueOf(AlbumActivity.class));
+                //Intent albumIntent = new Intent(getApplication(),AlbumActivity.class);
                 //startActivity(albumIntent);
                 //Memoリストを追加
                 ((MainActivity) getActivity()).showMemoForm(null);
             }
         });
-
-
         return v;
     }
 }

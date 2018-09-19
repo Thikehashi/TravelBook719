@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity  {
             getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
         }
 
-        /*    /**
+    /*
     * Belongingsフォーム画面を表示
     *持ち物リスト画面
     * @param item Belongingsリストデータ
