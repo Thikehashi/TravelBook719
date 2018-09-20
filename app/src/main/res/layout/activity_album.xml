@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:scaleType="center"
-            android:src="@mipmap/navi_back_icon" />
+            android:src="@mipmap/navi_back_icon"/>
 
         <TextView
             android:id="@+id/tv_dir_title"
@@ -30,7 +30,7 @@
             android:singleLine="true"
             android:text="すべての画像"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/tv_selected_ok"
@@ -42,7 +42,7 @@
             android:text="確定"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:visibility="gone" />
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <TextView

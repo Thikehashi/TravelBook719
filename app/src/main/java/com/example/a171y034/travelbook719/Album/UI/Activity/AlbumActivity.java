@@ -36,7 +36,7 @@ import java.util.List;
 
 
 /**
- * 系统相册页面
+ * システムアルバムページ
  *
  * @author Clock
  * @since 2016-01-06
@@ -48,29 +48,29 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
     private final static String PACKAGE_URL_SCHEME = "package:";
 
     /**
-     * Android M 的Runtime Permission特性申请权限用的
+     *Android Mのランタイムパーミッション機能のアプリケーション権限
      */
     private final static int REQUEST_READ_EXTERNAL_STORAGE_CODE = 1;
     /**
-     * 相册列表页面
+     * アルバムリストページ
      */
     private AlbumFolderFragment mAlbumFolderFragment;
     /**
-     * 相册详情页面
+     * アルバムの詳細ページ
      */
     private HashMap<AlbumFolderInfo, AlbumDetailFragment> mAlbumDetailFragmentMap = new HashMap<>();
     /**
-     * 被选中的图片文件列表
+     * 選択された画像ファイルリスト
      */
     private ArrayList<File> mSelectedImageFileList = new ArrayList<>();
 
     private ImageScannerPresenter mImageScannerPresenter;
     /**
-     * 相册目录信息列表
+     * アルバムディレクトリ情報リスト
      */
     private List<AlbumFolderInfo> mAlbumFolderInfoList;
     /**
-     * 显示图片目录的名称，选中图片的按钮
+     *イメージディレクトリの名前を表示し、イメージのボタンを選択します
      */
     private TextView mTitleView, mSelectedView;
 
@@ -97,7 +97,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
     }
 
     /**
-     * 显示打开权限提示的对话框
+     *アクセス許可のプロンプトを表示するための表示ダイアログボックス
      */
     private void showMissingPermissionDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -125,7 +125,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
 
 
     /**
-     * 启动系统权限设置界面
+     *起動システム許可設定インターフェース
      */
     private void startSystemSettings() {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -143,7 +143,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
                 mImageScannerPresenter.startScanImage(getApplicationContext(), getSupportLoaderManager());
 
             } else {
-                showMissingPermissionDialog();//提示对话框
+                showMissingPermissionDialog();//プロンプトダイアログ
                 //Toast.makeText(this, R.string.grant_permission_failure, Toast.LENGTH_SHORT).show();
             }
         }
@@ -184,7 +184,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
     }
 
     /**
-     * 刷新目录名称
+     * ディレクトリ名をリフレッシュ
      *
      * @param albumFolderName
      */
@@ -195,7 +195,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
     }
 
     /**
-     * 切换到相册列表
+     * アルバムリストに切り替え
      */
     private void switchAlbumFolderList() {
         final FragmentManager fragmentManager = getSupportFragmentManager();
@@ -218,7 +218,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
 
 
     /**
-     * 刷新选中按钮的状态
+     * 選択したボタンの状態を更新
      */
     private void refreshSelectedViewState() {
         if (mSelectedImageFileList.size() == 0) {
@@ -243,11 +243,11 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
             mAlbumFolderFragment = AlbumFolderFragment.newInstance(mAlbumFolderInfoList);
             switchAlbumFolderList();
 
-            findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);//显示相册列表区域
+            findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);//アルバムのリストエリアを表示
 
         } else {
-            findViewById(R.id.fragment_container).setVisibility(View.GONE);//隐藏显示相册列表的区域
-            findViewById(R.id.tv_no_image).setVisibility(View.VISIBLE);//显示没有相片的提示
+            findViewById(R.id.fragment_container).setVisibility(View.GONE);//アルバムリストを表示する領域を非表示
+            findViewById(R.id.tv_no_image).setVisibility(View.VISIBLE);//写真なしのヒントを表示
 
         }
     }
@@ -257,11 +257,11 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         if (imageInfo != null) {
             boolean isSelected = imageInfo.isSelected();
             File imageFile = imageInfo.getImageFile();
-            if (isSelected) {//选中
+            if (isSelected) {//選択
                 if (!mSelectedImageFileList.contains(imageFile)) {
                     mSelectedImageFileList.add(imageFile);
                 }
-            } else {//取消选中
+            } else {//チェックしない
                 if (mSelectedImageFileList.contains(imageFile)) {
                     mSelectedImageFileList.remove(imageFile);
                 }

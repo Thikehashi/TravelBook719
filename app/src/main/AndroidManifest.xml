@@ -9,8 +9,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".Album.AlbumApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_schedule_top"
         android:label="@string/app_name"
@@ -30,13 +32,16 @@
         </activity>
         <activity
             android:name=".Album.UI.Activity.AlbumActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AlbumTheme"/>
         <activity
             android:name=".Album.UI.Activity.ImagePreviewActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/GalleryTheme"/>
         <activity
             android:name=".Album.UI.Activity.ImageSelectActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AlbumTheme"/>
     </application>
 
 </manifest>

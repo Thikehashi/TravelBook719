@@ -6,23 +6,23 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 扫描图片的结果
+ * イメージ結果をスキャン
  * <p/>
  * Created by Clock on 2016/3/21.
  */
 public class ImageScanResult {
 
     /**
-     * 系统所有有图片的文件夹
+     * システム内の画像を含むすべてのファイル
      */
     private List<File> albumFolderList;
     /**
-     * 每个有图片文件夹下面所包含的图片
+     * 画像フォルダのしたに画像
      */
     private Map<String, ArrayList<File>> albumImageListMap;
 
     /**
-     * 获取手机上所有有图片的目录
+     * 携帯電話の画像、すべてのディレクトリを取得
      *
      * @return
      */
@@ -35,7 +35,7 @@ public class ImageScanResult {
     }
 
     /**
-     * 获取手机上所有图片目录下包含的图片
+     * 携帯電話のすべての画像ディレクトリに含まれる画像を取得
      *
      * @return 一个Map，key是图片目录路径，value是对应目录下包含的所有图片文件
      */
