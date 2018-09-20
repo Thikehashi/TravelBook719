@@ -1,5 +1,6 @@
 package com.example.a171y034.travelbook719.Album.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.a171y034.travelbook719.Album.UI.Activity.AlbumActivity;
-import com.example.a171y034.travelbook719.MainActivity;
 import com.example.a171y034.travelbook719.R;
 
 /**
@@ -18,8 +18,6 @@ import com.example.a171y034.travelbook719.R;
 public class PhotoMainFragment extends Fragment  {
 
     public static final String TAG = AlbumActivity.class.getSimpleName();
-
-    private MainActivity parent;
 
     public static PhotoMainFragment newInstance(){
         PhotoMainFragment fragment = new PhotoMainFragment();
@@ -40,10 +38,10 @@ public class PhotoMainFragment extends Fragment  {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent albumIntent = new Intent(getApplication(),AlbumActivity.class);
-                //startActivity(albumIntent);
-                //Memoリストを追加
-                ((MainActivity) getActivity()).showMemoForm(null);
+                // AlbumActivityをstartさせる
+                Intent albumIntent;
+                albumIntent = new Intent(getActivity(),AlbumActivity.class);
+                startActivity(albumIntent);
             }
         });
         return v;
