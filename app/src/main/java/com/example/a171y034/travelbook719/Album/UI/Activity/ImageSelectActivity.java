@@ -36,6 +36,7 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_image_select);
 
         findViewById(R.id.iv_back).setOnClickListener(this);
+        findViewById(R.id.tv_select_ok).setOnClickListener(this);
 
         mImageLoaderWrapper = ImageLoaderFactory.getLoader();
         mSelectedImageList = (List<File>) getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
@@ -49,6 +50,8 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
     public void onClick(View v) {
         int viewId = v.getId();
         if (viewId == R.id.iv_back) {
+            onBackPressed();
+        }else if(viewId==R.id.tv_select_ok){
             onBackPressed();
 
         }
