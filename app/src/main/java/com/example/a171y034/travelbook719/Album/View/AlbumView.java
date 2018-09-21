@@ -9,16 +9,16 @@ import com.example.a171y034.travelbook719.Album.View.entity.AlbumViewData;
 public interface AlbumView {
 
     /**
-     * 刷新相册数据信息
+     * アルバムデータ情報を更新
      *
      * @param albumData
      */
     public void refreshAlbumData(AlbumViewData albumData);
 
     /**
-     * 切换图片目录
+     * 画像ディレクトリを切り替え
      *
-     * @param albumFolderInfo 指定图片目录的信息
+     * @param albumFolderInfo イメージディレクトリの情報を指定
      */
     public void switchAlbumFolder(AlbumFolderInfo albumFolderInfo);
 

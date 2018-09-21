@@ -1,10 +1,8 @@
 package com.example.a171y034.travelbook719.Album.ImageLoader;
 
 /**
- * ImageLoader工厂类
- ファクトリクラス
+ * ImageLoaderファクトリクラス
  * <p/>
- * Created by Clock on 2016/1/18.
  */
 public class ImageLoaderFactory {
 
@@ -15,7 +13,6 @@ public class ImageLoaderFactory {
     }
 
     /**
-     * 获取图片加载器
      *イメージローダーを取得する
      * @return
      */

@@ -20,10 +20,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 相册目录页面
+ * アルバムディレクトリページ
  *
  * @author Clock
- * @since 2016-01-17
  */
 public class AlbumFolderFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
@@ -31,7 +30,7 @@ public class AlbumFolderFragment extends BaseFragment implements AdapterView.OnI
 
     private AlbumView mAlbumView;
     /**
-     * 相册目录列表
+     * アルバムディレクトリリスト
      */
     private List<AlbumFolderInfo> mAlbumFolderInfoList;
     private ListView mFolderListView;
@@ -41,7 +40,7 @@ public class AlbumFolderFragment extends BaseFragment implements AdapterView.OnI
     }
 
     /**
-     * @param albumFolderInfoList 相册目录列表
+     * @param albumFolderInfoList アルバムディレクトリリスト
      * @return
      */
     public static AlbumFolderFragment newInstance(List<AlbumFolderInfo> albumFolderInfoList) {

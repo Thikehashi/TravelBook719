@@ -18,10 +18,9 @@ import java.io.File;
 import java.util.List;
 
 /**
- * 显示选中图片的界面
+ * 選択した画像のインターフェイスを表示
  *
  * @author Clock
- * @since 2016-01-26
  */
 public class ImageSelectActivity extends BaseActivity implements View.OnClickListener {
 

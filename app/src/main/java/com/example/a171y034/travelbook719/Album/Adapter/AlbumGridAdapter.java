@@ -17,9 +17,8 @@ import com.example.a171y034.travelbook719.R;
 import java.util.List;
 
 /**
- * 相册视图适配器 アルバムビューア
+ * アルバムビューア
  * <p/>
- * Created by Clock on 2016/1/16.
  */
 public class AlbumGridAdapter extends BaseAdapter {
 
@@ -121,33 +120,34 @@ public class AlbumGridAdapter extends BaseAdapter {
     }
 
     /**
-     * 重置缓存视图的初始状态
+     * キャッシュされたビューの
+     * 初期状態をリセット
      *
      * @param viewHolder
      */
     private void resetConvertView(AlbumViewHolder viewHolder) {
-        viewHolder.imageSelectedCheckBox.setOnCheckedChangeListener(null);//先取消选择状态的监听
+        viewHolder.imageSelectedCheckBox.setOnCheckedChangeListener(null);//リスナーの状態を選択解除
         viewHolder.imageSelectedCheckBox.setChecked(false);
     }
 
     private static class AlbumViewHolder {
         /**
-         * 显示图片的位置
+         * 画像の位置表示
          */
         ImageView albumItem;
         /**
-         * 图片选择按钮
+         * 画像選択ボタン
          */
         CheckBox imageSelectedCheckBox;
     }
 
 
     /**
-     * 点击预览图片操作监听借口
+     * プレビュー画像クリックイベント
      */
     public static interface OnClickPreviewImageListener {
         /**
-         * 当想点击某张图片进行预览的时候触发此函数
+         * 画像をクリックしてプレビューするときにトリガされる
          *
          * @param imageInfo
          */

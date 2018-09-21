@@ -8,7 +8,6 @@ import java.util.Map;
 /**
  * イメージ結果をスキャン
  * <p/>
- * Created by Clock on 2016/3/21.
  */
 public class ImageScanResult {
 
@@ -37,7 +36,7 @@ public class ImageScanResult {
     /**
      * 携帯電話のすべての画像ディレクトリに含まれる画像を取得
      *
-     * @return 一个Map，key是图片目录路径，value是对应目录下包含的所有图片文件
+     * @return Map，keyイメージのディレクトリパス，value
      */
     public Map<String, ArrayList<File>> getAlbumImageListMap() {
         return albumImageListMap;

@@ -7,18 +7,15 @@ import java.io.File;
 /**
  * 目录管理器 ディレクトリマネージャ
  * <p/>
- * Created by Clock on 2016/5/28.
  */
 public class FolderManager {
 
     /**
-     * 应用程序在SD卡上的主目录名称
-     SDカード上のアプリケーションのホームディレクトリ名
+     * SDカード上のアプリケーションのホームディレクトリ名
      */
     private final static String APP_FOLDER_NAME = "album";
     /**
-     * 存放闪退日志目录名
-     フラッシュバック・ログ・ディレクトリ名を格納する
+     * フラッシュバック・ログ・ディレクトリ名を格納する
      */
     private final static String CRASH_LOG_FOLDER_NAME = "crash";
 
@@ -26,10 +23,9 @@ public class FolderManager {
     }
 
     /**
-     * 获取app在sd卡上的主目录 アプリのホームディレクトリをsdカードで取得する
+     * アプリのホームディレクトリをsdカードで取得する
      *
-     * @return 成功则返回目录，失败则返回null
-    成功した場合はディレクトリに戻り、失敗した場合はnullを返します。
+     * @return 成功した場合はディレクトリに戻り、失敗した場合はnullを返します。
      */
     public static File getAppFolder() {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -43,7 +39,7 @@ public class FolderManager {
     }
 
     /**
-     * 获取闪退日志存放目录 フラッシュバック・ログ・ストレージ・ディレクトリを取得する
+     * フラッシュバック・ログ・ストレージ・ディレクトリを取得する
      *
      * @return
      */
@@ -59,11 +55,10 @@ public class FolderManager {
     }
 
     /**
-     * 创建目录 ディレクトリの作成
+     * ディレクトリの作成
      *
      * @param folder
-     * @return 创建成功则返回目录，失败则返回null
-    作成が成功した場合はディレクトリを返し、失敗した場合はnullを返します。
+     * @return 作成が成功した場合はディレクトリを返し、失敗した場合はnullを返します。
      */
     private static File createOnNotFound(File folder) {
         if (folder == null) {

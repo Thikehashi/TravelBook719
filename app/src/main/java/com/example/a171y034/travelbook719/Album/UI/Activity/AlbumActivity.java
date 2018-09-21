@@ -39,7 +39,6 @@ import java.util.List;
  * システムアルバムページ
  *
  * @author Clock
- * @since 2016-01-06
  */
 public class AlbumActivity extends BaseActivity implements View.OnClickListener, ImageChooseView, AlbumView {
 
@@ -212,7 +211,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
                 }
             }
         });
-        //fragmentTransaction.commit(); //会产生 java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
+        //fragmentTransaction.commit(); //生産 java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
         fragmentTransaction.commitAllowingStateLoss();//http://stackoverflow.com/questions/25486656/java-lang-illegalstateexceptioncan-not-perform-this-action-after-onsaveinstance
     }
 

@@ -5,27 +5,21 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 目录信息
- ディレクトリ情報
+ *ディレクトリ情報
  * <p/>
- * Created by Clock on 2016/3/21.
  */
 public class AlbumFolderInfo implements Serializable {
 
 
     /**
-     * 目录名
      * ディレクトリ名
      */
     private String folderName;
     /**
-     * 包含的所有图片信息
-     *
-     すべての画像情報が含まれています
+     *すべての画像情報が含まれています
      */
     private List<ImageInfo> imageInfoList;
     /**
-     * 第一张图片
      * 最初の写真
      */
     private File frontCover;

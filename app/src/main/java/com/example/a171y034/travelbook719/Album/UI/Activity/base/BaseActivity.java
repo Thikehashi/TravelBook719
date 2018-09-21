@@ -5,10 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
 /**
- * 所有Activity方法的基类
- すべてのActivityメソッドの基本クラス
+ * すべてのActivityメソッドの基本クラス
  * <p/>
- * Created by Clock on 2016/1/14.
  */
 public class BaseActivity extends AppCompatActivity {
 

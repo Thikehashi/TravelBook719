@@ -15,10 +15,11 @@ import com.nostra13.universalimageloader.core.download.ImageDownloader;
 import java.io.File;
 
 /**
- * 开源框架 Android-Universal-Image-Loader 的封装实现
+ * オープンソースフレームワーク
+ * Android-Universal-Image-Loader
+ * パッケージの実装
  * <p/>
  * <link>https://github.com/nostra13/Android-Universal-Image-Loader</link>
- * Created by Clock on 2016/1/18.
  */
 public class UniversalAndroidImageLoader implements ImageLoaderWrapper {
 
@@ -41,7 +42,7 @@ public class UniversalAndroidImageLoader implements ImageLoaderWrapper {
                 .showImageOnLoading(imageLoadingResId)
                 .showImageForEmptyUri(imageErrorResId)
                 .showImageOnFail(imageErrorResId)
-                .cacheInMemory(true) //加载本地图片不需要再做SD卡缓存，只做内存缓存即可
+                .cacheInMemory(true) //ローカルイメージの読み込みにはSDカードのキャッシュは必要ない、メモリキャッシングをしている
                 .considerExifParams(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
@@ -81,7 +82,9 @@ public class UniversalAndroidImageLoader implements ImageLoaderWrapper {
     }
 
     /**
-     * 初始化Universal-Image-Loader框架的参数设置
+     * 初期化
+     * Universal-Image-Loader
+     * フレームパラメータ設定
      *
      * @param context
      */

@@ -26,24 +26,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by Clock on 2016/3/21.
- */
 public class ImageScannerModelImpl implements ImageScannerModel {
 
     private final static String TAG = ImageScannerModelImpl.class.getSimpleName();
     /**
-     * Loader的唯一ID号 ローダー固有のID番号
+     *  Loader固有のID番号
      */
     private final static int IMAGE_LOADER_ID = 1000;
     /**
-     * 加载数据的映射
-     データマッピングを読み込む
+     *  データマッピングを読み込む
      */
     private final static String[] IMAGE_PROJECTION = new String[]{
-            MediaStore.Images.Media.DATA,//图片路径 画像パス
-            MediaStore.Images.Media.DISPLAY_NAME,//图片文件名，包括后缀名 画像ファイル名（接尾辞名を含む）
-            MediaStore.Images.Media.TITLE//图片文件名，不包含后缀 画像ファイル名、接尾辞なし
+            MediaStore.Images.Media.DATA,//画像パス
+            MediaStore.Images.Media.DISPLAY_NAME,//画像ファイル名（接尾辞名を含む）
+            MediaStore.Images.Media.TITLE//画像ファイル名、接尾辞なし
     };
 
     private OnScanImageFinish mOnScanImageFinish;
@@ -75,7 +71,7 @@ public class ImageScannerModelImpl implements ImageScannerModel {
                 Log.i(TAG, "-----onLoadFinished-----");
                 if (data.getCount() == 0) {
                     if (onScanImageFinish != null) {
-                        onScanImageFinish.onFinish(null);//无图片直接返回null イメージが直接nullを返さない
+                        onScanImageFinish.onFinish(null);//イメージが直接nullを返さない
                     }
 
                 } else {
@@ -85,8 +81,8 @@ public class ImageScannerModelImpl implements ImageScannerModel {
                     ArrayList<File> albumFolderList = new ArrayList<>();
                     HashMap<String, ArrayList<File>> albumImageListMap = new HashMap<>();
                     while (data.moveToNext()) {
-                        File imageFile = new File(data.getString(dataColumnIndex));//图片文件 画像ファイル
-                        File albumFolder = imageFile.getParentFile();//图片目录 写真のカタログ
+                        File imageFile = new File(data.getString(dataColumnIndex));//画像ファイル
+                        File albumFolder = imageFile.getParentFile();//写真のカタログ
                         if (!albumFolderList.contains(albumFolder)) {
                             albumFolderList.add(albumFolder);
                         }
@@ -96,14 +92,14 @@ public class ImageScannerModelImpl implements ImageScannerModel {
                             albumImageFiles = new ArrayList<>();
                             albumImageListMap.put(albumPath, albumImageFiles);
                         }
-                        albumImageFiles.add(imageFile);//添加到对应的相册目录下面 対応するアルバムディレクトリに追加する
+                        albumImageFiles.add(imageFile);//対応するアルバムディレクトリに追加する
                     }
 
-                    sortByFileLastModified(albumFolderList);//对图片目录做排序 画像ディレクトリをソートする
+                    sortByFileLastModified(albumFolderList);//画像ディレクトリをソートする
 
 
                     Set<String> keySet = albumImageListMap.keySet();
-                    for (String key : keySet) {//对图片目录下所有的图片文件做排序 画像ディレクトリ内のすべての画像ファイルをソートする
+                    for (String key : keySet) {//画像ディレクトリ内のすべての画像ファイルをソートする
                         ArrayList<File> albumImageList = albumImageListMap.get(key);
                         sortByFileLastModified(albumImageList);
                     }
@@ -127,7 +123,7 @@ public class ImageScannerModelImpl implements ImageScannerModel {
                 Log.i(TAG, "-----onLoaderReset-----");
             }
         };
-        loaderManager.initLoader(IMAGE_LOADER_ID, null, loaderCallbacks);//初始化指定id的Loader 指定したIDでローダーを初期化する
+        loaderManager.initLoader(IMAGE_LOADER_ID, null, loaderCallbacks);//指定したIDでLoaderを初期化する
     }
 
     @Override
@@ -158,11 +154,11 @@ public class ImageScannerModelImpl implements ImageScannerModel {
                     String albumPath = albumFolder.getAbsolutePath();
                     List<File> albumImageList = albumImageListMap.get(albumPath);
                     File frontCover = albumImageList.get(0);
-                    albumFolderInfo.setFrontCover(frontCover);//设置首张图片最初の画像を設定する
+                    albumFolderInfo.setFrontCover(frontCover);//最初の画像を設定する
 
                     List<ImageInfo> imageInfoList = ImageInfo.buildFromFileList(albumImageList);
                     albumFolderInfo.setImageInfoList(imageInfoList);
-                    allImageFolder.getImageInfoList().addAll(imageInfoList);//保存到 "全部图片" 目录下 "すべての写真"ディレクトリに保存
+                    allImageFolder.getImageInfoList().addAll(imageInfoList);// "すべての写真"ディレクトリに保存
 
                     albumFolderInfoList.add(albumFolderInfo);
                 }
@@ -180,7 +176,7 @@ public class ImageScannerModelImpl implements ImageScannerModel {
     }
 
     /**
-     * 创建一个"全部图片"目录 「すべての写真」ディレクトリを作成する
+     * 「すべての写真」ディレクトリを作成する
      *
      * @param albumImageListMap
      * @return
@@ -188,20 +184,20 @@ public class ImageScannerModelImpl implements ImageScannerModel {
     private AlbumFolderInfo createAllImageAlbum(Context context, Map<String, ArrayList<File>> albumImageListMap) {
         if (albumImageListMap != null) {
             AlbumFolderInfo albumFolderInfo = new AlbumFolderInfo();
-            albumFolderInfo.setFolderName(context.getString(R.string.all_image));//设置目录名 ディレクトリ名を設定する
+            albumFolderInfo.setFolderName(context.getString(R.string.all_image));//ディレクトリ名を設定する
 
             List<ImageInfo> totalImageInfoList = new ArrayList<>();
-            albumFolderInfo.setImageInfoList(totalImageInfoList);//设置所有的图片文件 すべての画像ファイルを設定する
+            albumFolderInfo.setImageInfoList(totalImageInfoList);//すべての画像ファイルを設定する
 
-            boolean isFirstAlbum = true; //是否是第一个目录 最初のディレクトリですか？
+            boolean isFirstAlbum = true; //最初のディレクトリですか？
 
             Set<String> albumKeySet = albumImageListMap.keySet();
-            for (String albumKey : albumKeySet) {//每个目录的图片 各ディレクトリの画像
+            for (String albumKey : albumKeySet) {//各ディレクトリの画像
                 List<File> albumImageList = albumImageListMap.get(albumKey);
 
                 if (isFirstAlbum == true) {
                     File frontCover = albumImageList.get(0);
-                    albumFolderInfo.setFrontCover(frontCover);//设置第一张图片 最初の画像を設定する
+                    albumFolderInfo.setFrontCover(frontCover);//最初の画像を設定する
 
                     isFirstAlbum = false;
                 }
@@ -215,8 +211,7 @@ public class ImageScannerModelImpl implements ImageScannerModel {
 
 
     /**
-     * 按照文件的修改时间进行排序，越最近修改的，排得越前
-     ファイルの変更時刻に応じて並べ替え、最近変更されたもの、より高度なもの
+     * ファイルの変更時刻に応じて並べ替え、最近変更されたもの、より高度なもの
      */
     private void sortByFileLastModified(List<File> files) {
         Collections.sort(files, new Comparator<File>() {

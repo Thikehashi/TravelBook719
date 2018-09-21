@@ -11,10 +11,8 @@ import com.example.a171y034.travelbook719.Album.Model.ImageScannerModelImpl;
 
 
 /**
- * 图片扫描Presenter实现类
- イメージスキャンプレゼンター実装クラス
+ *Presenter イメージスキャンプレゼンター実装クラス
  * <p/>
- * Created by Clock on 2016/3/21.
  */
 public class ImageScannerPresenterImpl implements ImageScannerPresenter {
 

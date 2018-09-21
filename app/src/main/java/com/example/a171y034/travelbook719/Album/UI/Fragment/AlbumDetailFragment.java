@@ -23,10 +23,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 相册详情页面
+ * アルバム詳細ページ
  *
  * @author Clock
- * @since 2016-01-17
  */
 public class AlbumDetailFragment extends BaseFragment implements AlbumGridAdapter.OnClickPreviewImageListener {
 
@@ -35,21 +34,22 @@ public class AlbumDetailFragment extends BaseFragment implements AlbumGridAdapte
     private static final String ARG_PARAM1 = "param1";
 
     /**
-     * 图片选择View层交互接口
+     * 画像選択View
+     * レイヤインタラクションインターフェイス
      */
     private ImageChooseView mImageChooseView;
     /**
-     * 相册信息列表
+     * アルバム情報リスト
      */
     private List<ImageInfo> mImageInfoList;
     /**
-     * 相册视图控件
+     * アルバムビューコントロール
      */
     private GridView mAlbumGridView;
     private BaseAdapter mAlbumGridViewAdapter;
 
     /**
-     * @param imageInfoList 相册列表
+     * @param imageInfoList アルバムリスト
      * @return
      */
     public static AlbumDetailFragment newInstance(List<ImageInfo> imageInfoList) {
@@ -109,7 +109,7 @@ public class AlbumDetailFragment extends BaseFragment implements AlbumGridAdapte
     }
 
     /**
-     * 刷新新选中图片的数据
+     * 新しく選択した画像のデータの更新
      *
      * @param newSelectedImageList
      */
@@ -118,7 +118,7 @@ public class AlbumDetailFragment extends BaseFragment implements AlbumGridAdapte
         for (int imagePos = 0; imagePos < imageSize; imagePos++) {
             ImageInfo srcImageInfo = newSelectedImageList.get(imagePos);
             ImageInfo destImageInfo = mImageInfoList.get(imagePos);
-            destImageInfo.setIsSelected(srcImageInfo.isSelected());//遍历更新选中的状态
+            destImageInfo.setIsSelected(srcImageInfo.isSelected());//選択した状態をトラバースする
             if (mImageChooseView != null) {
                 mImageChooseView.refreshSelectedCounter(destImageInfo);
             }

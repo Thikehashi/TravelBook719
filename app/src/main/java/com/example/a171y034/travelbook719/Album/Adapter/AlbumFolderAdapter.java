@@ -15,9 +15,8 @@ import java.io.File;
 import java.util.List;
 
 /**
- * 相册目录适配器 アルバムディレクトリアダプタ
+ * アルバムディレクトリアダプタ
  * <p/>
- * Created by Clock on 2016/1/17.
  */
 public class AlbumFolderAdapter extends BaseAdapter {
 

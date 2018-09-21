@@ -31,7 +31,6 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  * 写真プレビュー
  *
  * @author Clock
- * @since 2016-01-25
  */
 public class ImagePreviewActivity extends BaseActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
@@ -54,7 +53,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
      */
     private List<ImageInfo> mPreviewImageInfoList;
     /**
-     * 刚进入页面显示的图片
+     * ページに表示された画像
      */
     private ImageInfo mPreviewImageInfo;
 
@@ -218,7 +217,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
 
         @Override
         public void onPageSelected(int position) {
-            mImageSelectedBox.setOnCheckedChangeListener(null);//先反注册监听，避免重复更新选中的状态
+            mImageSelectedBox.setOnCheckedChangeListener(null);//リスナーを最初に登録し、選択した状態を繰り返し更新しないようにする
 
             setPositionToTitle(position);
             ImageInfo imageInfo = mPreviewImageInfoList.get(position);
@@ -234,7 +233,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     * 设置标题现实当前所处的位置
+     * タイトルの？現在位置を設定
      *
      * @param position
      */
@@ -246,7 +245,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     * 切换沉浸栏模式（Immersive - Mode）
+     * バーの切り替え（Immersive - Mode）
      */
     private void toggleImmersiveMode() {
         if (Build.VERSION.SDK_INT >= 11) {

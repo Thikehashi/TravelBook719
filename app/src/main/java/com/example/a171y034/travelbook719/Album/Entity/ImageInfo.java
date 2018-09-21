@@ -6,23 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 图片信息
- *
- 画像情報
+ *画像情報
  * <p/>
- * Created by Clock on 2016/1/26.
  */
 public class ImageInfo implements Serializable {
 
     private static final long serialVersionUID = -3753345306395582567L;
     /**
-     * 图片文件
-     *
-     画像ファイル
+     *画像ファイル
      */
     private File imageFile;
     /**
-     * 是否被选中
      * 選択されているかどうか
      */
     private boolean isSelected = false;
