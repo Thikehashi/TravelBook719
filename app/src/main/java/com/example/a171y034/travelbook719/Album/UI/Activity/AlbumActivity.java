@@ -95,6 +95,8 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
+/********************************************* パーミッション要求ここから**********************************************************************************/
+
     /**
      *アクセス許可のプロンプトを表示するための表示ダイアログボックス
      */
@@ -122,7 +124,6 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         builder.show();
     }
 
-
     /**
      *起動システム許可設定インターフェース
      */
@@ -148,12 +149,14 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
+/********************************************* パーミッション要求ここまで**********************************************************************************/
+
     @Override
     public void onClick(View v) {
         int viewId = v.getId();
+        // 前の画面に戻る
         if (viewId == R.id.iv_back) {
             onBackPressed();
-
         } else if (viewId == R.id.tv_selected_ok) {
             Intent showSelectedIntent = new Intent(this, ImageSelectActivity.class);
             showSelectedIntent.putExtra(ImageSelectActivity.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
