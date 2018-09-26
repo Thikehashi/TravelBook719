@@ -162,7 +162,6 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
             showSelectedIntent.putExtra(ImageSelectActivity.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
             startActivity(showSelectedIntent);
             finish();
-
         }
     }
 

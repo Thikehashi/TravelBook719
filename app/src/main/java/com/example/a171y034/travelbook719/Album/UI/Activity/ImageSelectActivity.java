@@ -40,23 +40,43 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
 
         mImageLoaderWrapper = ImageLoaderFactory.getLoader();
         mSelectedImageList = (List<File>) getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
-
         mSelectedImageGridView = (GridView) findViewById(R.id.gv_image_selected);
         mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
 
     }
 
+    /**
+     *  クリックイベント
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         int viewId = v.getId();
         if (viewId == R.id.iv_back) {
+            // ←（バック）ボタン
             onBackPressed();
         }else if(viewId==R.id.tv_select_ok){
-            onBackPressed();
+            // 追加ボタン
+            /*
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.add(R.id.content, new PhotoMainFragment(), "PhotoMainFragment");
+            android.support.v4.app.Fragment fragment = getSupportFragmentManager().findFragmentByTag("PhotoMainFragment");
+            if(fragment != null && fragment instanceof PhotoMainFragment){
+                ((PhotoMainFragment)fragment).callFromOut();
+            }
+            
 
+
+            mImageLoaderWrapper = ImageLoaderFactory.getLoader();
+            mSelectedImageList = (List<File>) getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
+            mSelectedImageGridView = (GridView) findViewById(R.id.main_image_selected);
+            mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
+            */
+            onBackPressed();
         }
     }
 
+    /*********************************************************選択した写真をまとめたものを表示*************************************************************************/
     private class SelectedImageGridAdapter extends BaseAdapter {
 
         @Override
@@ -109,4 +129,5 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
     private static class SelectedImageHolder {
         ImageView selectedImageView;
     }
+/**********************************************************************************************************************************/
 }

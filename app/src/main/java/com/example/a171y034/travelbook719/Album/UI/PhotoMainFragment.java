@@ -7,9 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import com.example.a171y034.travelbook719.Album.UI.Activity.AlbumActivity;
+import com.example.a171y034.travelbook719.Album.UI.Activity.ImageSelectActivity;
 import com.example.a171y034.travelbook719.R;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * Created by 171y034 on 2018/07/19.
@@ -18,6 +23,11 @@ import com.example.a171y034.travelbook719.R;
 public class PhotoMainFragment extends Fragment  {
 
     public static final String TAG = AlbumActivity.class.getSimpleName();
+
+    private GridView mSelectedImagegridView;
+    private ImageSelectActivity mImageSelectActivity;
+    private List<File> mSelectedImageList;
+
 
     public static PhotoMainFragment newInstance(){
         PhotoMainFragment fragment = new PhotoMainFragment();
@@ -32,7 +42,10 @@ public class PhotoMainFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_photo_main, container, false);
-
+        /*
+        mSelectedImageList = (List<File>) getActivity().getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
+        mSelectedImagegridView = (GridView) v.findViewById(R.id.main_image_selected);
+        */
         // FloatingActionButtonをクリックしたら画面遷移
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -46,4 +59,9 @@ public class PhotoMainFragment extends Fragment  {
         });
         return v;
     }
+    /*
+    public void callFromOut(){
+        mSelectedImagegridView.setAdapter(new SelectedImageGridAdapter());
+    }
+    */
 }
