@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderWrapper;
 import com.example.a171y034.travelbook719.Album.UI.Activity.AlbumActivity;
-import com.example.a171y034.travelbook719.Album.UI.Activity.ImageSelectActivity;
 import com.example.a171y034.travelbook719.R;
 
 import java.io.File;
@@ -25,8 +25,10 @@ public class PhotoMainFragment extends Fragment  {
     public static final String TAG = AlbumActivity.class.getSimpleName();
 
     private GridView mSelectedImagegridView;
-    private ImageSelectActivity mImageSelectActivity;
+
     private List<File> mSelectedImageList;
+
+    private ImageLoaderWrapper mImageLoaderWrapper;
 
 
     public static PhotoMainFragment newInstance(){

@@ -27,6 +27,7 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
     public final static String EXTRA_SELECTED_IMAGE_LIST = "selectImage";
 
     private GridView mSelectedImageGridView;
+    private GridView mMainGridView;
     private List<File> mSelectedImageList;
     private ImageLoaderWrapper mImageLoaderWrapper;
 
@@ -41,6 +42,7 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
         mImageLoaderWrapper = ImageLoaderFactory.getLoader();
         mSelectedImageList = (List<File>) getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
         mSelectedImageGridView = (GridView) findViewById(R.id.gv_image_selected);
+        //mMainGridView = (GridView) findViewById(R.id.main_image_selected);
         mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
 
     }
@@ -64,20 +66,14 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
             if(fragment != null && fragment instanceof PhotoMainFragment){
                 ((PhotoMainFragment)fragment).callFromOut();
             }
-            
-
-
-            mImageLoaderWrapper = ImageLoaderFactory.getLoader();
-            mSelectedImageList = (List<File>) getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
-            mSelectedImageGridView = (GridView) findViewById(R.id.main_image_selected);
-            mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
             */
+            //mMainGridView.setAdapter(new SelectedImageGridAdapter());
             onBackPressed();
         }
     }
 
     /*********************************************************選択した写真をまとめたものを表示*************************************************************************/
-    private class SelectedImageGridAdapter extends BaseAdapter {
+    public class SelectedImageGridAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -126,7 +122,7 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
-    private static class SelectedImageHolder {
+    public static class SelectedImageHolder {
         ImageView selectedImageView;
     }
 /**********************************************************************************************************************************/
