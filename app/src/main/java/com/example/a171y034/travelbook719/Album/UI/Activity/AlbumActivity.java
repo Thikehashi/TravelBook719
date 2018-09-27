@@ -22,6 +22,7 @@ import com.example.a171y034.travelbook719.Album.Entity.ImageInfo;
 import com.example.a171y034.travelbook719.Album.UI.Activity.base.BaseActivity;
 import com.example.a171y034.travelbook719.Album.UI.Fragment.AlbumDetailFragment;
 import com.example.a171y034.travelbook719.Album.UI.Fragment.AlbumFolderFragment;
+import com.example.a171y034.travelbook719.Album.UI.PhotoMainFragment;
 import com.example.a171y034.travelbook719.Album.View.AlbumView;
 import com.example.a171y034.travelbook719.Album.View.ImageChooseView;
 import com.example.a171y034.travelbook719.Album.View.entity.AlbumViewData;
@@ -158,9 +159,19 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         if (viewId == R.id.iv_back) {
             onBackPressed();
         } else if (viewId == R.id.tv_selected_ok) {
-            Intent showSelectedIntent = new Intent(this, ImageSelectActivity.class);
-            showSelectedIntent.putExtra(ImageSelectActivity.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
-            startActivity(showSelectedIntent);
+            /*
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            PhotoMainFragment fragment = new PhotoMainFragment();
+            Bundle bundle = new Bundle();
+            bundle.(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
+            fragment.setArguments(bundle);
+            fragmentTransaction.add(R.id.main_image_selected, fragment, "hoge_fragment");
+            fragmentTransaction.commit();
+               */
+            Intent showSelectedIntent = new Intent(this, PhotoMainFragment.class);
+            showSelectedIntent.putExtra(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
+            //Toast.makeText(this, "追加しました", Toast.LENGTH_SHORT).show();
             finish();
         }
     }
