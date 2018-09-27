@@ -27,7 +27,6 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
     public final static String EXTRA_SELECTED_IMAGE_LIST = "selectImage";
 
     private GridView mSelectedImageGridView;
-    private GridView mMainGridView;
     private List<File> mSelectedImageList;
     private ImageLoaderWrapper mImageLoaderWrapper;
 
@@ -37,12 +36,10 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_image_select);
 
         findViewById(R.id.iv_back).setOnClickListener(this);
-        findViewById(R.id.tv_select_ok).setOnClickListener(this);
 
         mImageLoaderWrapper = ImageLoaderFactory.getLoader();
         mSelectedImageList = (List<File>) getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
         mSelectedImageGridView = (GridView) findViewById(R.id.gv_image_selected);
-        //mMainGridView = (GridView) findViewById(R.id.main_image_selected);
         mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
 
     }
@@ -56,18 +53,6 @@ public class ImageSelectActivity extends BaseActivity implements View.OnClickLis
         int viewId = v.getId();
         if (viewId == R.id.iv_back) {
             // ←（バック）ボタン
-            onBackPressed();
-        }else if(viewId==R.id.tv_select_ok){
-            // 追加ボタン
-            /*
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.content, new PhotoMainFragment(), "PhotoMainFragment");
-            android.support.v4.app.Fragment fragment = getSupportFragmentManager().findFragmentByTag("PhotoMainFragment");
-            if(fragment != null && fragment instanceof PhotoMainFragment){
-                ((PhotoMainFragment)fragment).callFromOut();
-            }
-            */
-            //mMainGridView.setAdapter(new SelectedImageGridAdapter());
             onBackPressed();
         }
     }
