@@ -61,9 +61,4 @@ public class PhotoMainFragment extends Fragment  {
         });
         return v;
     }
-    /*
-    public void callFromOut(){
-        mSelectedImagegridView.setAdapter(new SelectedImageGridAdapter());
-    }
-    */
 }
