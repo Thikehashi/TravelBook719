@@ -14,22 +14,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.clock.utils.common.RuleUtils;
 import com.example.a171y034.travelbook719.Album.Entity.AlbumFolderInfo;
 import com.example.a171y034.travelbook719.Album.Entity.ImageInfo;
-import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderFactory;
-import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderWrapper;
 import com.example.a171y034.travelbook719.Album.UI.Activity.base.BaseActivity;
 import com.example.a171y034.travelbook719.Album.UI.Fragment.AlbumDetailFragment;
 import com.example.a171y034.travelbook719.Album.UI.Fragment.AlbumFolderFragment;
+import com.example.a171y034.travelbook719.Album.UI.PhotoMainFragment;
 import com.example.a171y034.travelbook719.Album.View.AlbumView;
 import com.example.a171y034.travelbook719.Album.View.ImageChooseView;
 import com.example.a171y034.travelbook719.Album.View.entity.AlbumViewData;
@@ -53,12 +46,6 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
     private final static String TAG = AlbumActivity.class.getSimpleName();
     private final static String FRAGMENT_BACK_STACK = "FragmentBackStack";
     private final static String PACKAGE_URL_SCHEME = "package:";
-
-    public final static String EXTRA_SELECTED_IMAGE_LIST = "selectImage";
-
-    private GridView mSelectedImageGridView;
-    private List<File> mSelectedImageList;
-    private ImageLoaderWrapper mImageLoaderWrapper;
 
     /**
      *Android Mのランタイムパーミッション機能のアプリケーション権限
@@ -95,11 +82,6 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         mTitleView = (TextView) findViewById(R.id.tv_dir_title);
         mSelectedView = (TextView) findViewById(R.id.tv_selected_ok);
         mSelectedView.setOnClickListener(this);
-
-        View view = this.getLayoutInflater().inflate(R.layout.fragment_photo_main, null);
-        mImageLoaderWrapper = ImageLoaderFactory.getLoader();
-        mSelectedImageGridView = (GridView) view.findViewById(R.id.main_image_selected);
-
 
         findViewById(R.id.iv_back).setOnClickListener(this);
 
@@ -177,20 +159,12 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         if (viewId == R.id.iv_back) {
             onBackPressed();
         } else if (viewId == R.id.tv_selected_ok) {
-
-            //Intent showSelectedIntent = new Intent(this, AlbumActivity.class);
-            //showSelectedIntent.putExtra(AlbumActivity.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
-            SelectedImageView();
-
-            /*
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             PhotoMainFragment fragment = new PhotoMainFragment();
-            fragmentTransaction.replace(R.id.content, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-            */
+            Bundle args = new Bundle();
+            args.putString(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, String.valueOf(mSelectedImageFileList));
+            fragment.setArguments(args);
             finish();
+            //SelectedImageView();
         }
     }
 
@@ -299,64 +273,4 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
             refreshSelectedViewState();
         }
     }
-
-    private void SelectedImageView(){
-        mSelectedImageList = (List<File>) mSelectedImageFileList; //(List<File>) getIntent().getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
-        mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
-    }
-
-    /*********************************************************選択した写真をまとめたものを表示*************************************************************************/
-    public class SelectedImageGridAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            if (mSelectedImageList == null) {
-                return 0;
-            }
-            return mSelectedImageList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return mSelectedImageList.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            SelectedImageHolder holder = null;
-            if (convertView == null) {
-                holder = new SelectedImageHolder();
-                convertView = View.inflate(parent.getContext(), R.layout.selected_image_item, null);
-
-                int gridItemSpacing = (int) RuleUtils.convertDp2Px(parent.getContext(), 2);
-                int gridEdgeLength = (RuleUtils.getScreenWidth(parent.getContext()) - gridItemSpacing * 2) / 3;
-
-                AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(gridEdgeLength, gridEdgeLength);
-                convertView.setLayoutParams(layoutParams);
-                holder.selectedImageView = (ImageView) convertView.findViewById(R.id.iv_selected_item);
-                convertView.setTag(holder);
-
-            } else {
-                holder = (SelectedImageHolder) convertView.getTag();
-
-            }
-
-            ImageLoaderWrapper.DisplayOption displayOption = new ImageLoaderWrapper.DisplayOption();
-            displayOption.loadingResId = R.mipmap.img_default;
-            displayOption.loadErrorResId = R.mipmap.img_error;
-            mImageLoaderWrapper.displayImage(holder.selectedImageView, mSelectedImageList.get(position), displayOption);
-
-            return convertView;
-        }
-    }
-
-    public static class SelectedImageHolder {
-        ImageView selectedImageView;
-    }
-/**********************************************************************************************************************************/
 }
