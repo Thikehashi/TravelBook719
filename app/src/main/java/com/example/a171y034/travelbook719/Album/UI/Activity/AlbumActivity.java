@@ -31,6 +31,7 @@ import com.example.a171y034.travelbook719.Album.presenter.ImageScannerPresenterI
 import com.example.a171y034.travelbook719.R;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -161,7 +162,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         } else if (viewId == R.id.tv_selected_ok) {
             PhotoMainFragment fragment = new PhotoMainFragment();
             Bundle args = new Bundle();
-            args.putString(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, String.valueOf(mSelectedImageFileList));
+            args.putSerializable(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, (Serializable)mSelectedImageFileList);
             fragment.setArguments(args);
             finish();
             //SelectedImageView();

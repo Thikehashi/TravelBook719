@@ -33,7 +33,7 @@ public class PhotoMainFragment extends Fragment  {
 
     private GridView mSelectedImageGridView;
     private List<File> mSelectedImageList;
-    private ImageLoaderWrapper mImageLoaderWrapper;
+    private ImageLoaderWrapper mImageLoaderWrapper = ImageLoaderFactory.getLoader();;
 
     public static PhotoMainFragment newInstance(){
         PhotoMainFragment fragment = new PhotoMainFragment();
@@ -50,9 +50,8 @@ public class PhotoMainFragment extends Fragment  {
         View v =  inflater.inflate(R.layout.fragment_photo_main, container, false);
 
         // AlbumActivityからの値の受け取り
-        mImageLoaderWrapper = ImageLoaderFactory.getLoader();
         mSelectedImageGridView = (GridView) v.findViewById(R.id.main_image_selected);
-        if(EXTRA_SELECTED_IMAGE_LIST == null){
+        if(mSelectedImageList != null){
             mSelectedImageList = (List<File>) getArguments().getSerializable(EXTRA_SELECTED_IMAGE_LIST);
             mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
         }
