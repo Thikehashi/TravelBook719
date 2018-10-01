@@ -31,7 +31,6 @@ import com.example.a171y034.travelbook719.Album.presenter.ImageScannerPresenterI
 import com.example.a171y034.travelbook719.R;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -79,6 +78,8 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album);
+
+
 
         mTitleView = (TextView) findViewById(R.id.tv_dir_title);
         mSelectedView = (TextView) findViewById(R.id.tv_selected_ok);
@@ -160,10 +161,14 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         if (viewId == R.id.iv_back) {
             onBackPressed();
         } else if (viewId == R.id.tv_selected_ok) {
+            Intent intent = new Intent(AlbumActivity.this, PhotoMainFragment.class);
+            intent.putExtra(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
+            /*
             PhotoMainFragment fragment = new PhotoMainFragment();
             Bundle args = new Bundle();
             args.putSerializable(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, (Serializable)mSelectedImageFileList);
             fragment.setArguments(args);
+            */
             finish();
             //SelectedImageView();
         }

@@ -25,7 +25,7 @@ import java.util.List;
  * Created by 171y034 on 2018/07/19.
  */
 
-public class PhotoMainFragment extends Fragment  {
+public class PhotoMainFragment extends Fragment {
 
     public static final String TAG = PhotoMainFragment.class.getSimpleName();
 
@@ -33,7 +33,7 @@ public class PhotoMainFragment extends Fragment  {
 
     private GridView mSelectedImageGridView;
     private List<File> mSelectedImageList;
-    private ImageLoaderWrapper mImageLoaderWrapper = ImageLoaderFactory.getLoader();;
+    private ImageLoaderWrapper mImageLoaderWrapper;
 
     public static PhotoMainFragment newInstance(){
         PhotoMainFragment fragment = new PhotoMainFragment();
@@ -42,19 +42,17 @@ public class PhotoMainFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // AlbumActivityから値の受け取り
+        mImageLoaderWrapper = ImageLoaderFactory.getLoader();
+        Intent intent = getActivity().getIntent();
+        mSelectedImageList = (List<File>) intent.getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_photo_main, container, false);
-
-        // AlbumActivityからの値の受け取り
-        mSelectedImageGridView = (GridView) v.findViewById(R.id.main_image_selected);
-        if(mSelectedImageList != null){
-            mSelectedImageList = (List<File>) getArguments().getSerializable(EXTRA_SELECTED_IMAGE_LIST);
-            mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
-        }
 
         // FloatingActionButtonをクリックしたら画面遷移
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.floatingActionButton);
@@ -67,61 +65,66 @@ public class PhotoMainFragment extends Fragment  {
                 startActivity(albumIntent);
             }
         });
+
+        // 選択した写真を表示させるためのmSelectedImageGridView
+        mSelectedImageGridView = (GridView) v.findViewById(R.id.main_image_selected);
+        mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
+
         return v;
     }
 
     /*********************************************************選択した写真をまとめたものを表示*************************************************************************/
-     public class SelectedImageGridAdapter extends BaseAdapter {
+    public class SelectedImageGridAdapter extends BaseAdapter {
 
-    @Override
-    public int getCount() {
-    if (mSelectedImageList == null) {
-    return 0;
+        @Override
+        public int getCount() {
+            if (mSelectedImageList == null) {
+                return 0;
+            }
+            return mSelectedImageList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mSelectedImageList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            SelectedImageHolder holder = null;
+            if (convertView == null) {
+                holder = new SelectedImageHolder();
+                convertView = View.inflate(parent.getContext(), R.layout.selected_image_item, null);
+
+                int gridItemSpacing = (int) RuleUtils.convertDp2Px(parent.getContext(), 2);
+                int gridEdgeLength = (RuleUtils.getScreenWidth(parent.getContext()) - gridItemSpacing * 2) / 3;
+
+                AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(gridEdgeLength, gridEdgeLength);
+                convertView.setLayoutParams(layoutParams);
+                holder.selectedImageView = (ImageView) convertView.findViewById(R.id.iv_selected_item);
+                convertView.setTag(holder);
+
+            } else {
+                holder = (SelectedImageHolder) convertView.getTag();
+
+            }
+
+            ImageLoaderWrapper.DisplayOption displayOption = new ImageLoaderWrapper.DisplayOption();
+            displayOption.loadingResId = R.mipmap.img_default;
+            displayOption.loadErrorResId = R.mipmap.img_error;
+            mImageLoaderWrapper.displayImage(holder.selectedImageView, mSelectedImageList.get(position), displayOption);
+
+            return convertView;
+        }
     }
-    return mSelectedImageList.size();
+
+    public static class SelectedImageHolder {
+        ImageView selectedImageView;
     }
-
-    @Override
-    public Object getItem(int position) {
-    return mSelectedImageList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-    return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-    SelectedImageHolder holder = null;
-    if (convertView == null) {
-    holder = new SelectedImageHolder();
-    convertView = View.inflate(parent.getContext(), R.layout.selected_image_item, null);
-
-    int gridItemSpacing = (int) RuleUtils.convertDp2Px(parent.getContext(), 2);
-    int gridEdgeLength = (RuleUtils.getScreenWidth(parent.getContext()) - gridItemSpacing * 2) / 3;
-
-    AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(gridEdgeLength, gridEdgeLength);
-    convertView.setLayoutParams(layoutParams);
-    holder.selectedImageView = (ImageView) convertView.findViewById(R.id.iv_selected_item);
-    convertView.setTag(holder);
-
-    } else {
-    holder = (SelectedImageHolder) convertView.getTag();
-
-    }
-
-    ImageLoaderWrapper.DisplayOption displayOption = new ImageLoaderWrapper.DisplayOption();
-    displayOption.loadingResId = R.mipmap.img_default;
-    displayOption.loadErrorResId = R.mipmap.img_error;
-    mImageLoaderWrapper.displayImage(holder.selectedImageView, mSelectedImageList.get(position), displayOption);
-
-    return convertView;
-    }
-    }
-
-     public static class SelectedImageHolder {
-     ImageView selectedImageView;
-     }
-     /**********************************************************************************************************************************/
+/**********************************************************************************************************************************/
 }
