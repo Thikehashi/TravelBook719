@@ -163,6 +163,8 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         } else if (viewId == R.id.tv_selected_ok) {
             Intent intent = new Intent(AlbumActivity.this, PhotoMainFragment.class);
             intent.putExtra(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
+            Intent showSelectedIntent = new Intent(this, ImageSelectActivity.class);
+            showSelectedIntent.putExtra(ImageSelectActivity.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
             /*
             PhotoMainFragment fragment = new PhotoMainFragment();
             Bundle args = new Bundle();

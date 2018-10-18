@@ -20,7 +20,6 @@ import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderWrapper;
 import com.example.a171y034.travelbook719.Album.UI.Activity.base.BaseActivity;
 import com.example.a171y034.travelbook719.R;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,9 +27,10 @@ import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * 写真プレビュー
+ * 图片预览界面
  *
  * @author Clock
+ * @since 2016-01-25
  */
 public class ImagePreviewActivity extends BaseActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
@@ -49,11 +49,11 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     private View mHeaderView, mFooterView;
 
     /**
-     * すべての写真リスト
+     * 所有图片的列表
      */
     private List<ImageInfo> mPreviewImageInfoList;
     /**
-     * ページに表示された画像
+     * 刚进入页面显示的图片
      */
     private ImageInfo mPreviewImageInfo;
 
@@ -68,7 +68,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
             getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
                 @Override
                 public void onSystemUiVisibilityChange(int visibility) {
-                    if (View.SYSTEM_UI_FLAG_VISIBLE == visibility) {//上下を追加してアニメーションを表示
+                    if (View.SYSTEM_UI_FLAG_VISIBLE == visibility) {//此处需要添加顶部和底部消失和出现的动画效果
                         Log.i(TAG, "SYSTEM_UI_FLAG_VISIBLE");
                         mHeaderView.startAnimation(AnimationUtils.loadAnimation(ImagePreviewActivity.this, R.anim.top_enter_anim));
                         mFooterView.startAnimation(AnimationUtils.loadAnimation(ImagePreviewActivity.this, R.anim.bottom_enter_anim));
@@ -152,7 +152,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     * PhotoViewのクリックイベント
+     * 监听PhotoView的点击事件
      */
     private PhotoViewAttacher.OnViewTapListener mOnPreviewTapListener = new PhotoViewAttacher.OnViewTapListener() {
         @Override
@@ -162,7 +162,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     };
 
     /**
-     * アルバムアダプター
+     * 相册适配器
      */
     private class PreviewPagerAdapter extends PagerAdapter {
 
@@ -177,7 +177,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
         @Override
         public boolean isViewFromObject(View view, Object object) {
             PhotoView galleryPhotoView = (PhotoView) view.findViewById(R.id.iv_show_image);
-            galleryPhotoView.setScale(1.0f);//スライド処理中のズーム（操作前の元の画像サイズに戻す）
+            galleryPhotoView.setScale(1.0f);//让图片在滑动过程中恢复回缩放操作前原图大小
             return view == object;
         }
 
@@ -205,8 +205,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     * アルバム詳細ページ
-     * スライドリスナー
+     * 相册详情页面滑动监听
      */
     private class PreviewChangeListener implements ViewPager.OnPageChangeListener {
 
@@ -217,7 +216,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
 
         @Override
         public void onPageSelected(int position) {
-            mImageSelectedBox.setOnCheckedChangeListener(null);//リスナーを最初に登録し、選択した状態を繰り返し更新しないようにする
+            mImageSelectedBox.setOnCheckedChangeListener(null);//先反注册监听，避免重复更新选中的状态
 
             setPositionToTitle(position);
             ImageInfo imageInfo = mPreviewImageInfoList.get(position);
@@ -233,7 +232,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     * タイトルの？現在位置を設定
+     * 设置标题现实当前所处的位置
      *
      * @param position
      */
@@ -245,7 +244,7 @@ public class ImagePreviewActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     * バーの切り替え（Immersive - Mode）
+     * 切换沉浸栏模式（Immersive - Mode）
      */
     private void toggleImmersiveMode() {
         if (Build.VERSION.SDK_INT >= 11) {
