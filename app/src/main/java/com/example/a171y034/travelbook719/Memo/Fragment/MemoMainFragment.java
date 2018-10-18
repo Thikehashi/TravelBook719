@@ -122,7 +122,7 @@ public class MemoMainFragment  extends Fragment implements AdapterView.OnItemCli
     }
 
     /**
-     * Scheduleリストの作成・変更を検知するBroadcastReceiver.
+     * Memoリストの作成・変更を検知するBroadcastReceiver.
      */
     BroadcastReceiver mAddTodoReceiver = new BroadcastReceiver() {
         @Override
