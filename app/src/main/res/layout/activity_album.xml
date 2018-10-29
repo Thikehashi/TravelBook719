@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="アルバム画像にありません"
+        android:text="アルバムに画像がありません"
         android:visibility="gone" />
 
     <FrameLayout

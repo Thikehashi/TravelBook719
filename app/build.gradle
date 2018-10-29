@@ -38,7 +38,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:27.+'
     compile 'com.android.support:design:27.+'
-    compile 'com.android.support:support-vector-drawable:27.+'
+    //compile 'com.android.support:support-vector-drawable:27.+'
+    //compile 'com.android.support:recyclerview-v7:27.1.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile files('libs/universal-image-loader-1.9.5.jar')
