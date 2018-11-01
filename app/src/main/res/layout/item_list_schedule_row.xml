@@ -39,12 +39,23 @@
         android:layout_alignParentStart="true"
         android:gravity="center"/>
 
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="　   |"
+        android:layout_below="@+id/StartTime"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
     <TextView
         android:id="@+id/EndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/created_time"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginRight="142dp"
+        android:layout_marginEnd="142dp"
+        android:layout_below="@+id/textView3"/>
 
     <TextView
         android:id="@+id/category_icon"
@@ -59,6 +70,5 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/EndTime"
         android:layout_toEndOf="@+id/EndTime"/>
-
 
 </RelativeLayout>
