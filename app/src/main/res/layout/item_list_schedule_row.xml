@@ -65,10 +65,10 @@
         android:focusableInTouchMode="false"
         android:gravity="center"
         android:textSize="24sp"
-        android:layout_marginLeft="39dp"
-        android:layout_marginStart="39dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="46dp"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/EndTime"
-        android:layout_toEndOf="@+id/EndTime"/>
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3"/>
 
 </RelativeLayout>
