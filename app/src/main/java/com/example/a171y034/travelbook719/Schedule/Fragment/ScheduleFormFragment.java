@@ -22,9 +22,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.a171y034.travelbook719.Schedule.PickerDialog.DatePickerDialogFragment;
 import com.example.a171y034.travelbook719.R;
 import com.example.a171y034.travelbook719.Schedule.Add.AddSchedule;
+import com.example.a171y034.travelbook719.Schedule.PickerDialog.DatePickerDialogFragment;
 import com.example.a171y034.travelbook719.Schedule.PickerDialog.TimePickerDialogFragment;
 import com.example.a171y034.travelbook719.Schedule.PickerDialog.TimePickerDialogFragment2;
 
@@ -96,6 +96,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
         //カテゴリアイコンのインスタンスを取得
         rootView.findViewById(R.id.color_white).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.category_tourism).setOnClickListener((View.OnClickListener) this);
+//        rootView.findViewById(R.id.category_tourism).setBackgroundResource(R.drawable.category_icon_tourism_on);
         rootView.findViewById(R.id.category_move).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.category_lunch).setOnClickListener((View.OnClickListener) this);
         rootView.findViewById(R.id.category_shopping).setOnClickListener((View.OnClickListener) this);
@@ -320,6 +321,7 @@ public class ScheduleFormFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         int viewId = v.getId();
+        int i = 0;
         if (viewId == R.id.color_white) {
             mCategoryIcon = AddSchedule.Category.NONE;
         } else if (viewId == R.id.category_tourism) {
