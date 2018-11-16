@@ -13,7 +13,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.clock.utils.common.RuleUtils;
-import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderFactory;
 import com.example.a171y034.travelbook719.Album.ImageLoader.ImageLoaderWrapper;
 import com.example.a171y034.travelbook719.Album.UI.Activity.AlbumActivity;
 import com.example.a171y034.travelbook719.R;
@@ -43,10 +42,9 @@ public class PhotoMainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // AlbumActivityから値の受け取り
-        mImageLoaderWrapper = ImageLoaderFactory.getLoader();
-        Intent intent = getActivity().getIntent();
-        mSelectedImageList = (List<File>) intent.getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
+        //Intent intent = getActivity().getIntent();
+        //mSelectedImageList = (List<File>) intent.getSerializableExtra(EXTRA_SELECTED_IMAGE_LIST);
+
     }
 
     @Override
@@ -65,11 +63,15 @@ public class PhotoMainFragment extends Fragment {
                 startActivity(albumIntent);
             }
         });
-
+        /*
+        // AlbumActivityから値の受け取り
+        Bundle bundle = this.getArguments();
+        mImageLoaderWrapper = ImageLoaderFactory.getLoader();
         // 選択した写真を表示させるためのmSelectedImageGridView
+        mSelectedImageList = (List<File>) bundle.getParcelableArrayList(EXTRA_SELECTED_IMAGE_LIST);
         mSelectedImageGridView = (GridView) v.findViewById(R.id.main_image_selected);
         mSelectedImageGridView.setAdapter(new SelectedImageGridAdapter());
-
+        */
         return v;
     }
 

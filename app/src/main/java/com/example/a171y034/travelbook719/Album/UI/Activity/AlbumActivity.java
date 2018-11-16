@@ -22,7 +22,6 @@ import com.example.a171y034.travelbook719.Album.Entity.ImageInfo;
 import com.example.a171y034.travelbook719.Album.UI.Activity.base.BaseActivity;
 import com.example.a171y034.travelbook719.Album.UI.Fragment.AlbumDetailFragment;
 import com.example.a171y034.travelbook719.Album.UI.Fragment.AlbumFolderFragment;
-import com.example.a171y034.travelbook719.Album.UI.PhotoMainFragment;
 import com.example.a171y034.travelbook719.Album.View.AlbumView;
 import com.example.a171y034.travelbook719.Album.View.ImageChooseView;
 import com.example.a171y034.travelbook719.Album.View.entity.AlbumViewData;
@@ -161,18 +160,34 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
         if (viewId == R.id.iv_back) {
             onBackPressed();
         } else if (viewId == R.id.tv_selected_ok) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            /*
             Intent intent = new Intent(AlbumActivity.this, PhotoMainFragment.class);
             intent.putExtra(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
             Intent showSelectedIntent = new Intent(this, ImageSelectActivity.class);
             showSelectedIntent.putExtra(ImageSelectActivity.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
+            */
             /*
             PhotoMainFragment fragment = new PhotoMainFragment();
             Bundle args = new Bundle();
-            args.putSerializable(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, (Serializable)mSelectedImageFileList);
+            args.putStringArrayList(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
             fragment.setArguments(args);
+            fragmentManager.beginTransaction().replace(R.id.content, fragment);
+            */
+            /*
+            Bundle bundle = new Bundle();
+            bundle.putAll(PhotoMainFragment.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
+            PhotoMainFragment fragment = new PhotoMainFragment();
+            fragment.setArguments(bundle);
             */
             finish();
-            //SelectedImageView();
+            /*
+            Intent showSelectedIntent = new Intent(this, ImageSelectActivity.class);
+            showSelectedIntent.putExtra(ImageSelectActivity.EXTRA_SELECTED_IMAGE_LIST, mSelectedImageFileList);
+            startActivity(showSelectedIntent);
+            finish();
+            */
         }
     }
 
