@@ -36,22 +36,19 @@
             android:layout_width="@dimen/colorlabel_size"
             android:layout_height="@dimen/colorlabel_size"
             android:layout_margin="@dimen/colorlabel_padding"
-            android:foreground="@drawable/category_icon_tourism"
-            android:background="@drawable/button_color"/>
+            android:background="@drawable/tourism_image"/>
 
         <Button
-            android:foreground="@drawable/category_icon_move"
-            android:background="@drawable/button_color"
+            android:background="@drawable/move_image"
             android:id="@+id/category_move"
             android:layout_margin="@dimen/colorlabel_padding"
             android:layout_width="@dimen/colorlabel_size"
-            android:layout_height="@dimen/colorlabel_size" />
+            android:layout_height="@dimen/colorlabel_size"/>
 
 
         <Button
             android:layout_margin="@dimen/colorlabel_padding"
-            android:foreground="@drawable/category_icon_lunch"
-            android:background="@drawable/button_color"
+            android:background="@drawable/lunch_image"
             android:id="@+id/category_lunch"
             android:layout_width="@dimen/colorlabel_size"
             android:layout_height="@dimen/colorlabel_size" />
@@ -59,24 +56,21 @@
 
         <Button
             android:layout_margin="@dimen/colorlabel_padding"
-            android:foreground="@drawable/category_icon_shopping"
-            android:background="@drawable/button_color"
+            android:background="@drawable/shopping_image"
             android:id="@+id/category_shopping"
             android:layout_width="@dimen/colorlabel_size"
             android:layout_height="@dimen/colorlabel_size" />
 
         <Button
             android:layout_margin="@dimen/colorlabel_padding"
-            android:foreground="@drawable/category_icon_dormitory"
-            android:background="@drawable/button_color"
+            android:background="@drawable/dormitory_image"
             android:id="@+id/category_dormitory"
             android:layout_width="@dimen/colorlabel_size"
             android:layout_height="@dimen/colorlabel_size" />
 
         <Button
             android:layout_margin="@dimen/colorlabel_padding"
-            android:foreground="@drawable/category_icon_experience"
-            android:background="@drawable/button_color"
+            android:background="@drawable/experience_image"
             android:id="@+id/category_experience"
             android:layout_width="@dimen/colorlabel_size"
             android:layout_height="@dimen/colorlabel_size" />
